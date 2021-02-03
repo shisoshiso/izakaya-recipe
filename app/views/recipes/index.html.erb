@@ -1,8 +1,66 @@
 <%= render "shared/header" %>
 <div class="main">
   <div class="u-containt">
+    <%# ランキング %>
+    <div class='item-contents'>
+      <h2 class='title'>ピックアップカテゴリー</h2>
+      <%= link_to '新規投稿商品', "#", class: "subtitle" %>
+      <ul class='item-lists'>
+        <% @recipes.each do |item| %>
+          <li class='list'>
+            <%= link_to item_path(recipe.id) do %>
+              <div class='item-img-content'>
+                <%= image_tag recipe.image, class: "item-img" %>
+              </div>
+              <div class='item-info'>
+                <h3 class='item-name'>
+                  <%= recipe.title %>
+                </h3>
+                <div class='item-price'>
+                  <span><%= recipe.title %>円</span>
+                  <div class='star-btn'>
+                    <%# image_tag "star.png", class:"star-icon" %>
+                    <span class='star-count'>0</span>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+            </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
+  <%# /新着一覧 %>
   <div class="l-containt">
+   <%# 新着一覧 %>
+    <div class='item-contents'>
+      <h2 class='title'>ピックアップカテゴリー</h2>
+      <%= link_to '新規投稿商品', "#", class: "subtitle" %>
+      <ul class='item-lists'>
+        <% @recipes.each do |recipe| %>
+          <li class='list'>
+            <%= link_to recipe_path(recipe.id) do %>
+              <div class='item-img-content'>
+                <%= image_tag recipe.image, class: "item-img" %>
+              </div>
+              <div class='item-info'>
+                <h3 class='item-name'>
+                  <%= recipe.title %>
+                </h3>
+                <div class='item-price'>
+                  <span><%= recipe.title %>円</span>
+                  <div class='star-btn'>
+                    <%# image_tag "star.png", class:"star-icon" %>
+                    <span class='star-count'>0</span>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+            </li>
+        <% end %>
+       </ul>
+    </div>
+    <%# /新着一覧 %>
   </div>
 </div>
 
