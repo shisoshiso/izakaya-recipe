@@ -3,6 +3,17 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  def email_required? #バリデーションにemailの検証が必要かどうかを検証するメソッド
+    false
+  end
+
+  def email_changed?
+    false
+  end
+  def will_save_change_to_email?
+    false
+  end
   
   has_many :recipes
   has_many :comments
