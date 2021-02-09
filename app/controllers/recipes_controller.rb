@@ -1,9 +1,10 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /recipes or /recipes.json
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.all.order('created_at DESC')
   end
 
   # GET /recipes/1 or /recipes/1.json
