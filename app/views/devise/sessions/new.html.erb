@@ -13,10 +13,10 @@
   </div>
   <div class="form-group">
     <div class='form-text-wrap'>
-      <label class="form-text">メールアドレス</label>
+      <label class="form-text">ニックネーム</label>
       <span class="indispensable">必須</span>
     </div>
-    <%= f.email_field :email, class:"input-default", id:"email", placeholder:"PC・携帯どちらでも可", autofocus: true %>
+    <%= f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"例) furima太郎", maxlength:"30" %>
   </div>
   <div class="form-group">
     <div class='form-text-wrap'>
