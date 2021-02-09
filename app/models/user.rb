@@ -19,7 +19,7 @@ class User < ApplicationRecord
   has_many :comments
 
   with_options presence: true do
-    validates :nickname, length: {maximum: 30} #uniqueはマイグレーションファイルに記述
+    validates :nickname, length: {maximum: 30}, uniqueness: { message: 'そのニックネームはすでに使用されています' } #uniqueはマイグレーションファイルに記述
     validates :password, format: { with: /\A(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]+\z/, message: 'は半角英数字混合での入力が必要です' }
   end
   
