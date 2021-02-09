@@ -7,5 +7,5 @@ class User < ApplicationRecord
   has_many :recipes
   has_many :comments
 
-  validates :nickname, presence: true, unique: true
+  validates :nickname, presence: true, length: {maximum: 30} #uniqueはマイグレーションファイルに記述
 end
