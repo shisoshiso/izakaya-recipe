@@ -10,7 +10,7 @@
           <li class='list'>
             <%= link_to item_path(recipe.id) do %>
               <div class='item-img-content'>
-                <%= image_tag recipe.image, class: "item-img" if recipe.image.attached? %>
+                <%= image_tag recipe.image.variant(resize: '500x500'), class: "item-img" if recipe.image.attached? %>
               </div>
               <div class='item-info'>
                 <h3 class='item-name'>
@@ -41,7 +41,7 @@
           <li class='list'>
             <%= link_to recipe_path(recipe.id) do %>
               <div class='item-img-content'>
-                <%= image_tag recipe.image, class: "item-img" if recipe.image.attached? %>
+                <%= image_tag recipe.image.variant(resize: '500x500'), class: "item-img" if recipe.image.attached? %>
               </div>
               <div class='item-info'>
                 <h3 class='item-name'>
