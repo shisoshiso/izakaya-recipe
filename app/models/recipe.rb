@@ -8,6 +8,7 @@ class Recipe < ApplicationRecord
   belongs_to :alcohol
   
   with_options presence: true do
+    validates :image
     validates :name, length: {maximum: 30}
     validates :material
     validates :explanation
