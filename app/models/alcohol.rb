@@ -9,7 +9,7 @@ class Alcohol < ActiveHash::Base
     { id: 7, name: '焼酎' },
     { id: 8, name: 'ワイン' },
     { id: 9, name: '果実酒' },
-    { id: 10, name: 'カクテル' }
+    { id: 10, name: 'カクテル' },
     { id: 11, name: 'お茶割り' }
   ]
   include ActiveHash::Associations
