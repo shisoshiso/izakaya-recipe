@@ -1,6 +1,9 @@
 <%# CSS・・・assets/stylesheets/shared/header.css %>
 <header class='top-page-header'>
   <div class='search-bar-contents'>
+    <%= link_to root_path, class: "apple-btn" do %>
+      Izakaya Recipe
+    <% end %>
     <form class="search-form" action="#">
       <input class='input-box' placeholder='キーワードから探す'>
       <button class="search-button">

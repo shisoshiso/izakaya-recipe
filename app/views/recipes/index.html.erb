@@ -1,25 +1,24 @@
 <%= render "shared/header" %>
 <div class="main">
   <div class="u-containt">
-    <%# ランキング %>
+    <%# 人気レシピ %>
     <div class='item-contents'>
-      <h2 class='title'>ピックアップカテゴリー</h2>
-      <%= link_to '新規投稿商品', "#", class: "subtitle" %>
+      <h2 class='title'>人気レシピ</h2>
       <ul class='item-lists'>
-        <% @recipes.each do |item| %>
+        <% @recipes.each do |recipe| %>
           <li class='list'>
-            <%= link_to item_path(recipe.id) do %>
+            <%= link_to recipes_path(recipe.id) do %>
               <div class='item-img-content'>
-                <%= image_tag recipe.image, class: "item-img" %>
+                <%= image_tag recipe.image.variant(resize: '500x500'), class: "item-img" if recipe.image.attached? %>
               </div>
               <div class='item-info'>
                 <h3 class='item-name'>
-                  <%= recipe.title %>
+                  <%= recipe.name %>
                 </h3>
                 <div class='item-price'>
-                  <span><%= recipe.title %>円</span>
+                  <span><%= recipe.material %></span>
                   <div class='star-btn'>
-                    <%# image_tag "star.png", class:"star-icon" %>
+                    <%#いいね image_tag "star.png", class:"star-icon" %>
                     <span class='star-count'>0</span>
                   </div>
                 </div>
@@ -30,25 +29,24 @@
       </ul>
     </div>
   </div>
-  <%# /新着一覧 %>
+  <%# /人気レシピ %>
   <div class="l-containt">
    <%# 新着一覧 %>
     <div class='item-contents'>
-      <h2 class='title'>ピックアップカテゴリー</h2>
-      <%= link_to '新規投稿商品', "#", class: "subtitle" %>
+      <h2 class='title'>新着レシピ</h2>
       <ul class='item-lists'>
         <% @recipes.each do |recipe| %>
           <li class='list'>
-            <%= link_to recipe_path(recipe.id) do %>
+            <%= link_to recipes_path(recipe.id) do %>
               <div class='item-img-content'>
-                <%= image_tag recipe.image, class: "item-img" %>
+                <%= image_tag recipe.image.variant(resize: '500x500'), class: "item-img" if recipe.image.attached? %>
               </div>
               <div class='item-info'>
                 <h3 class='item-name'>
-                  <%= recipe.title %>
+                  <%= recipe.name %>
                 </h3>
                 <div class='item-price'>
-                  <span><%= recipe.title %>円</span>
+                  <span><%= recipe.material %></span>
                   <div class='star-btn'>
                     <%# image_tag "star.png", class:"star-icon" %>
                     <span class='star-count'>0</span>
