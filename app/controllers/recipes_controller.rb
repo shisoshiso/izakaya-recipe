@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: %i[ show edit update ]
+  before_action :set_recipe, only: %i[show edit update]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :move_to_index, only: [:edit]
 
@@ -41,17 +41,19 @@ class RecipesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_recipe
-      @recipe = Recipe.find(params[:id])
-    end
 
-    def move_to_index
-      redirect_to action: :index unless current_user.id == @recipe.user_id
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_recipe
+    @recipe = Recipe.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def recipe_params
-      params.require(:recipe).permit(:name, :material, :alcohol_id, :category_id, :genre_id, :explanation, :point, :user_id, :image).merge(user_id: current_user.id)
-    end
+  def move_to_index
+    redirect_to action: :index unless current_user.id == @recipe.user_id
+  end
+
+  # Only allow a list of trusted parameters through.
+  def recipe_params
+    params.require(:recipe).permit(:name, :material, :alcohol_id, :category_id, :genre_id, :explanation, :point, :user_id,
+                                   :image).merge(user_id: current_user.id)
+  end
 end

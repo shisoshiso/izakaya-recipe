@@ -6,10 +6,10 @@ class Recipe < ApplicationRecord
   belongs_to :category
   belongs_to :genre
   belongs_to :alcohol
-  
+
   with_options presence: true do
     validates :image
-    validates :name, length: {maximum: 30}
+    validates :name, length: { maximum: 30 }
     validates :material
     validates :explanation
   end
