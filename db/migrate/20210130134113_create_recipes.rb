@@ -6,6 +6,7 @@ class CreateRecipes < ActiveRecord::Migration[6.0]
       t.integer :alcohol_id, null:false
       t.integer :category_id, null:false
       t.integer :genre_id, null:false
+      t.text :explanation, null:false
       t.text :point
       t.references :user, null: false, foreign_key: true
 

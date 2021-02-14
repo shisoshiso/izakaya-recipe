@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2021_02_12_143127) do
     t.integer "alcohol_id", null: false
     t.integer "category_id", null: false
     t.integer "genre_id", null: false
+    t.text "explanation", null: false
     t.text "point"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
