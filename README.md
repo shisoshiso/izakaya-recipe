@@ -66,6 +66,7 @@ Things you may want to cover:
 | alcohol_id  | integer    | null: false                    |
 | category_id | integer    | null: false                    |
 | genre_id    | integer    | null: false                    |
+| explanation | text       | null: false                    |
 | point       | text       |                                |
 | user        | references | null: false, foreign_key: true |
 
