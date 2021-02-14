@@ -61,17 +61,17 @@
           合うお酒の種類
           <span class="indispensable">必須</span>
         </div>
-        <%#= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+        <%= f.collection_select(:alcohol_id, Alcohol.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
         <div class="weight-bold-text">
           カテゴリー
           <span class="indispensable">必須</span>
         </div>
-        <%#= f.collection_select(:item_status_id, ItemStatus.all, :id, :name, {}, {class:"select-box", id:"item-sales-status"}) %>
+        <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
         <div class="weight-bold-text">
           ジャンル
           <span class="indispensable">必須</span>
         </div>
-        <%#= f.collection_select(:item_status_id, ItemStatus.all, :id, :name, {}, {class:"select-box", id:"item-sales-status"}) %>
+        <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"select-box", id:"item-sales-status"}) %>
       </div>
     </div>
     <%# /レシピの詳細 %>
