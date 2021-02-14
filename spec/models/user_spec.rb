@@ -6,7 +6,7 @@ describe User do
 
   describe 'ユーザー新規登録' do
     context '新規登録がうまくいくとき' do
-      it 'nicknameとpassword、password_confirmationが存在すれば登録できる' do
+      it '全ての値が正しく入力されていれば保存できること' do
         expect(@user).to be_valid
       end
     end
@@ -22,7 +22,7 @@ describe User do
         another_user = FactoryBot.build(:user)
         another_user.nickname = @user.nickname
         another_user.valid?
-        expect(another_user.errors.full_messages).to include("Nickname そのニックネームはすでに使用されています")
+        expect(another_user.errors.full_messages).to include('Nickname そのニックネームはすでに使用されています')
       end
       it 'passwordが空では登録できない' do
         @user.password = ''
