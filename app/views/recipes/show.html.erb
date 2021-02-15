@@ -1,43 +1,89 @@
-<%= link_to root_path, class: "apple-btn" do %>
-  Izakaya Recipe
-<% end %>
+<%= render "shared/header" %>
 
-<p id="notice"><%= notice %></p>
+<%# レシピの概要 %>
+<div class="item-show">
+  <div class="item-box">
+    <h2 class="name">
+      <%= @recipe.name %>
+    </h2>
+    <div class='item-img-content'>
+      <%= image_tag @recipe.image ,class:"item-box-img" %>
+    </div>
+    <div class="item-price-box">
+      <span class="item-price">
+        <%= @recipe.material %>
+      </span>
+    </div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @recipe.name %>
-</p>
+    <% if (user_signed_in?) && (current_user.id == @recipe.user_id) %>
+      <%= link_to 'レシピの編集', edit_recipe_path(@recipe.id), method: :get, class: "item-red-btn" %>
+      <p class='or-text'>or</p>
+      <%= link_to '削除', recipe_path(@recipe.id), method: :delete, class:'item-destroy' %>
+    <% end %>
 
-<p>
-  <strong>Material:</strong>
-  <%= @recipe.material %>
-</p>
+    <div class="item-explain-box">
+      <span><%= @recipe.explanation %></span>
+    </div>
+    <div class="item-explain-box">
+      <span><%= @recipe.point %></span>
+    </div>
+    <table class="detail-table">
+      <tbody>
+        <tr>
+          <th class="detail-item">投稿者</th>
+          <td class="detail-value"><%= @recipe.user.nickname %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">カテゴリー</th>
+          <td class="detail-value"><%= @recipe.category.name %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">ジャンル</th>
+          <td class="detail-value"><%= @recipe.genre.name %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">お酒の種類</th>
+          <td class="detail-value"><%= @recipe.alcohol.name %></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="option">
+      <div class="favorite-btn">
+        <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
+        <span>お気に入り 0</span>
+      </div>
+      <div class="report-btn">
+        <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
+        <span>不適切なレシピの通報</span>
+      </div>
+    </div>
+  </div>
+  <%# /レシピの概要 %>
 
-<p>
-  <strong>Alcohol:</strong>
-  <%= @recipe.alcohol_id %>
-</p>
+  <div class="comment-box">
+    <form>
+      <textarea class="comment-text"></textarea>
+      <p class="comment-warn">
+        相手のことを考え丁寧なコメントを心がけましょう。
+        <br>
+        不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      </p>
+      <button type="submit" class="comment-btn">
+        <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
+        <span>コメントする<span>
+      </button>
+    </form>
+  </div>
+  <div class="links">
+    <a href="#" class="change-item-btn">
+      ＜ 前のレシピ
+    </a>
+    <a href="#" class="change-item-btn">
+      後ろのレシピ ＞
+    </a>
+  </div>
+  <%= link_to 'トップページへ戻る', root_path %>
+  <a href="#" class='another-item'><%= @recipe.category.name %>をもっと見る</a>
+</div>
 
-<p>
-  <strong>Category:</strong>
-  <%= @recipe.category_id %>
-</p>
-
-<p>
-  <strong>Genre:</strong>
-  <%= @recipe.genre_id %>
-</p>
-
-<p>
-  <strong>Point:</strong>
-  <%= @recipe.point %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @recipe.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_recipe_path(@recipe) %> |
-<%= link_to 'Back', recipes_path %>
+<%= render "shared/footer" %>
