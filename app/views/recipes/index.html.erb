@@ -7,7 +7,7 @@
       <ul class='item-lists'>
         <% @recipes.each do |recipe| %>
           <li class='list'>
-            <%= link_to recipes_path(recipe.id) do %>
+            <%= link_to recipe_path(recipe.id) do %>
               <div class='item-img-content'>
                 <%= image_tag recipe.image.variant(resize: '500x500'), class: "item-img" if recipe.image.attached? %>
               </div>
@@ -55,7 +55,7 @@
       <ul class='item-lists'>
         <% @recipes.each do |recipe| %>
           <li class='list'>
-            <%= link_to recipes_path(recipe.id) do %>
+            <%= link_to recipe_path(recipe.id) do %>
               <div class='item-img-content'>
                 <%= image_tag recipe.image.variant(resize: '500x500'), class: "item-img" if recipe.image.attached? %>
               </div>
