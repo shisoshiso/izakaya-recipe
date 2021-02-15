@@ -18,20 +18,38 @@
                 <div class='item-price'>
                   <span><%= recipe.material %></span>
                   <div class='star-btn'>
-                    <%#いいね image_tag "star.png", class:"star-icon" %>
+                    <% image_tag "star.png", class:"star-icon" %>
                     <span class='star-count'>0</span>
                   </div>
                 </div>
               </div>
             <% end %>
-            </li>
+          </li>
+        <% end %>
+        <% unless @recipes.exists?%>
+          <li class='list'>
+            <%= link_to '#' do %>
+            <%= image_tag "sample_cucumber.png", class: "item-img" %>
+            <div class='item-info'>
+              <h3 class='item-name'>
+                レシピを投稿してね！
+              </h3>
+              <div class='item-price'>
+                <div class='star-btn'>
+                  <% image_tag "star.png", class:"star-icon" %>
+                  <span class='star-count'>0</span>
+                </div>
+              </div>
+            </div>
+            <% end %>
+          </li>
         <% end %>
       </ul>
     </div>
+    <%# /人気レシピ %>
   </div>
-  <%# /人気レシピ %>
   <div class="l-containt">
-   <%# 新着一覧 %>
+  <%# 新着一覧 %>
     <div class='item-contents'>
       <h2 class='title'>新着レシピ</h2>
       <ul class='item-lists'>
@@ -48,17 +66,35 @@
                 <div class='item-price'>
                   <span><%= recipe.material %></span>
                   <div class='star-btn'>
-                    <%# image_tag "star.png", class:"star-icon" %>
+                    <% image_tag "star.png", class:"star-icon" %>
                     <span class='star-count'>0</span>
                   </div>
                 </div>
               </div>
             <% end %>
-            </li>
+          </li>
         <% end %>
-       </ul>
+        <% unless @recipes.exists?%>
+          <li class='list'>
+            <%= link_to '#' do %>
+            <%= image_tag "sample_cucumber.png", class: "item-img" %>
+            <div class='item-info'>
+              <h3 class='item-name'>
+                レシピを投稿してね！
+              </h3>
+              <div class='item-price'>
+                <div class='star-btn'>
+                  <% image_tag "star.png", class:"star-icon" %>
+                  <span class='star-count'>0</span>
+                </div>
+              </div>
+            </div>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
     </div>
-    <%# /新着一覧 %>
+  <%# /新着一覧 %>
   </div>
 </div>
 
