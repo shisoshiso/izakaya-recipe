@@ -4,12 +4,10 @@
     <%= link_to root_path, class: "apple-btn" do %>
       Izakaya Recipe
     <% end %>
-    <form class="search-form" action="#">
-      <input class='input-box' placeholder='キーワードから探す'>
-      <button class="search-button">
-        <p href="#">検索</p>
-      </button>
-    </form>
+    <%= form_with(url: search_recipes_path, local: true, method: :get, class: "search-form") do |form| %>
+      <%= form.text_field :keyword, placeholder: "キーワードから探す", class: "input-box" %>
+      <%= form.submit "検索", class: "search-button" %>
+    <% end %>
   </div>
   <div class='nav'>
     <ul class='lists-left'>
