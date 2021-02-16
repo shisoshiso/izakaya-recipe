@@ -20,4 +20,12 @@ class Recipe < ApplicationRecord
     validates :category_id
     validates :genre_id
   end
+
+  def self.search(search)
+    if search != ""
+      Recipe.where('text LIKE(?)', "%#{search}%")
+    else
+      Recipe.all
+    end
+  end
 end

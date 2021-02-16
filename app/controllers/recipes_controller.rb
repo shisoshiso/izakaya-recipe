@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[show edit update]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :search]
   before_action :move_to_index, only: [:edit]
 
   def index
@@ -40,6 +40,10 @@ class RecipesController < ApplicationController
     recipe = Recipe.find(params[:id])
     recipe.destroy
     redirect_to root_path
+  end
+
+  def search
+    @tweets = Recipe.search(params[:keyword])
   end
 
   private
