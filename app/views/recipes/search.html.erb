@@ -1,0 +1,16 @@
+<%= render "shared/header" %>
+
+<div class="contents row">
+  <% @recipes.each do |recipe| %>
+    <div class="content_post">
+      <%= image_tag recipe.image.variant(resize: '500x500'), class: "item-img" if recipe.image.attached? %>
+      <p><%= recipe.name %></p>
+      <span class="name">
+        <a href="/users/<%= recipe.user.id %>">
+          <span>レシピ投稿者</span><%= recipe.user.nickname %>
+        </a>
+      </span>
+    </div>
+  <% end %>
+</div>
+
