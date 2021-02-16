@@ -1,10 +1,101 @@
-<%= link_to root_path, class: "apple-btn" do %>
-  Izakaya Recipe
-<% end %>
 
-<h1>レシピ編集ページ</h1>
+<div class="items-sell-contents">
+  <header class="items-sell-header">
+    <%= link_to root_path, class: "apple-btn" do %>
+      Izakaya Recipe
+    <% end %>
+  </header>
+  <div class="items-sell-main">
+    <h2 class="items-sell-title">レシピの情報を入力</h2>
+    <%= form_with model: @recipe,local: true do |f| %>
 
-<%= render 'form', recipe: @recipe %>
+    <%= render 'shared/error_messages', model: f.object %>
 
-<%= link_to 'Show', @recipe %> |
-<%= link_to 'Back', recipes_path %>
+    <%# レシピ画像 %>
+    <div class="img-upload">
+      <div class="weight-bold-text">
+        レシピ画像
+        <span class="indispensable">必須</span>
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%= f.file_field :image, id:"item-image" %>
+      </div>
+    </div>
+    <%# /レシピ画像 %>
+    <%# レシピ名とレシピ説明 %>
+    <div class="new-items">
+      <div class="weight-bold-text">
+        レシピ名
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :name, class:"items-text", id:"item-name", placeholder:"レシピ名（必須 30文字まで)", maxlength:"30" %>
+      <div class="items-explain">
+        <div class="weight-bold-text">
+          材料
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :material, class:"items-text", id:"item-info", placeholder:"材料（必須 1,000文字まで）きゅうりのたたきの例）・きゅうり：1本・塩：適量・ごま油：大さじ1・ごま：適量" ,rows:"10" ,maxlength:"1000" %>
+      </div>
+      <div class="items-explain">
+        <div class="weight-bold-text">
+          説明
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :explanation, class:"items-text", id:"item-info", placeholder:"レシピ手順の説明（必須 1,000文字まで）きゅうりのたたきの例）1.きゅうりを一口サイズにします。2.ボールに入れ、塩揉みします。3.冷蔵庫で10分ほど冷やします。4.調味料を混ぜて完成です。" ,rows:"10" ,maxlength:"1000" %>
+      </div>
+      <div class="items-explain">
+        <div class="weight-bold-text">
+          ポイント
+        </div>
+        <%= f.text_area :point, class:"items-text", id:"item-info", placeholder:"レシピのポイント（100文字まで）きゅうりのたたきの例）冷やすことでおいしくなります。" ,rows:"2" ,maxlength:"100" %>
+      </div>
+    </div>
+    <%# /レシピ名とレシピ説明 %>
+
+    <%# レシピの詳細 %>
+    <div class="items-detail">
+      <div class="weight-bold-text">レシピの詳細</div>
+      <div class="form">
+        <div class="weight-bold-text">
+          合うお酒の種類
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:alcohol_id, Alcohol.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+        <div class="weight-bold-text">
+          カテゴリー
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+        <div class="weight-bold-text">
+          ジャンル
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"select-box", id:"item-sales-status"}) %>
+      </div>
+    </div>
+    <%# /レシピの詳細 %>
+
+    <%# 下部ボタン %>
+    <div class="sell-btn-contents">
+      <%= f.submit "更新する" ,class:"sell-btn" %>
+      <%=link_to 'もどる', recipes_path, class:"back-btn"%>
+    </div>
+    <%# /下部ボタン %>
+  </div>
+  <% end %>
+
+  <footer class="items-sell-footer">
+    <ul class="menu">
+      <li><a href="#">プライバシーポリシー</a></li>
+      <li><a href="#">IzakayaRecipe利用規約</a></li>
+      <li><a href="#">特定商取引に関する表記</a></li>
+    </ul>
+    <%#= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
+    <p class="inc">
+      Copyright ©️ 2021 Soshi Kono
+    </p>
+  </footer>
+</div>
