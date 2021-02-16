@@ -43,7 +43,7 @@ class RecipesController < ApplicationController
   end
 
   def search
-    @tweets = Recipe.search(params[:keyword])
+    @recipes = Recipe.search(params[:keyword])
   end
 
   private

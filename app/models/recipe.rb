@@ -23,9 +23,9 @@ class Recipe < ApplicationRecord
 
   def self.search(search)
     if search != ""
-      Recipe.where('text LIKE(?)', "%#{search}%")
+      Recipe.where('name LIKE(?)', "%#{search}%")
     else
-      Recipe.all
+      Recipe.all.order('created_at DESC')
     end
   end
 end
