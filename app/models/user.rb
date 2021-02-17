@@ -26,6 +26,7 @@ class User < ApplicationRecord
   def already_favorited?(recipe)
     self.favorites.exists?(recipe_id: recipe.id)
   end
+  # /いいねされているかを判定するメソッド
 
   with_options presence: true do
     validates :nickname, length: { maximum: 30 }, uniqueness: { message: 'そのニックネームはすでに使用されています' } # uniqueはマイグレーションファイルに記述
