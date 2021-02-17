@@ -21,17 +21,6 @@
                     <% image_tag "star.png", class:"star-icon" %>
                     <span class='star-count'>0</span>
                   </div>
-                  <% if current_user.already_favorited?(@recipe) %>
-                    <%= link_to post_favorites_path(@recipe), method: :delete do %>
-                      <i class="fas fa-heart" style="color: red;"></i>
-                    <% end %>
-                    <span style="color: red;"><%= @recipe.favorites.count %></span>
-                  <% else %>
-                    <%= link_to post_favorites_path(@recipe), method: :post do %>
-                      <i class="far fa-heart"></i>
-                    <% end %>
-                    <%= @recipe.favorites.count %>
-                  <% end %>
                 </div>
               </div>
             <% end %>

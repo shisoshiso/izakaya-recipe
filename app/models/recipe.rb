@@ -22,6 +22,7 @@ class Recipe < ApplicationRecord
     validates :genre_id
   end
 
+  # データ検索を行うメソッド
   def self.search(search)
     if search != ''
       Recipe.where('name LIKE(?)', "%#{search}%")
@@ -29,4 +30,6 @@ class Recipe < ApplicationRecord
       Recipe.all.order('created_at DESC')
     end
   end
+  # /データ検索を行うメソッド
+
 end
