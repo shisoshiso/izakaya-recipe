@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'recipes#index'
   
-  resources :users, only: :show
+  resources :users, only: [:index, :show]
 
   resources :recipes do
     resources :comments, only: :create

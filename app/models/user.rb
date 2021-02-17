@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :recipes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :favorited_recipes, through: :favorites, source: :recipes
+  has_many :favorited, through: :favorites, source: :recipe
 
   # いいねしているかどうかの判定を行うメソッド
   def already_favorited?(recipe)
