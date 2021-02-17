@@ -10,6 +10,7 @@ class RecipesController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @recipe.comments.includes(:user)
+    @favorite = Favorite.new
   end
 
   def new

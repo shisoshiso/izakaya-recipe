@@ -18,8 +18,10 @@
                 <div class='item-price'>
                   <span><%= recipe.material %></span>
                   <div class='star-btn'>
-                    <% image_tag "star.png", class:"star-icon" %>
-                    <span class='star-count'>0</span>
+                    <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
+                    <span class='star-count'>
+                      <%= recipe.favorited_users.count %>
+                    </span>
                   </div>
                 </div>
               </div>
