@@ -19,6 +19,7 @@ class User < ApplicationRecord
 
   has_many :recipes
   has_many :comments
+  has_many :favorites, dependent: :destroy
 
   with_options presence: true do
     validates :nickname, length: { maximum: 30 }, uniqueness: { message: 'そのニックネームはすでに使用されています' } # uniqueはマイグレーションファイルに記述
