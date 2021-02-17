@@ -1,0 +1,10 @@
+<div class="contents row">
+  <p><%= @nickname %>さんの投稿一覧</p>
+  <% @recipes.each do |recipe| %>
+    <div class="content_post" style="background-image: url(<%= recipe.image %>);">
+      <p>レシピ名：<%= recipe.name %></p>
+      <span class="name">レシピの説明：<%= recipe.explanation %></span>
+      <%= image_tag recipe.image.variant(resize: '500x500'), class: "item-img" if recipe.image.attached? %>
+    </div>
+  <% end %>
+</div>

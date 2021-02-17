@@ -30,7 +30,11 @@
       <tbody>
         <tr>
           <th class="detail-item">投稿者</th>
-          <td class="detail-value"><%= @recipe.user.nickname %></td>
+          <td class="detail-value">
+            <a href="/users/<%= @recipe.user.id %>">
+              <%= @recipe.user.nickname %>
+            </a>
+          </td>
         </tr>
         <tr>
           <th class="detail-item">カテゴリー</th>

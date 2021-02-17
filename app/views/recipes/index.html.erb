@@ -16,7 +16,11 @@
                   <%= recipe.name %>
                 </h3>
                 <div class='item-price'>
-                  <span><%= recipe.material %></span>
+                  <span class="name">
+                    <a href="/users/<%= recipe.user.id %>">
+                      <span>投稿者</span><%= recipe.user.nickname %>
+                    </a>
+                  </span>
                   <div class='star-btn'>
                     <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
                     <span class='star-count'>
