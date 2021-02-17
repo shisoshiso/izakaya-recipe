@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'recipes#index'
   
   resources :users, only: [:index, :show]
+  resources :relationships, only: [:create, :destroy]
 
   resources :recipes do
     resources :comments, only: :create
