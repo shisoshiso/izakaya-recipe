@@ -1,6 +1,7 @@
 <h1>ユーザー一覧</h1>
 <% @users.each do |user| %>
-  <a href="/users/<%= user.id %>"><%= user.nickname %></a>
+  <%= link_to "#{user.nickname}", user_path(user.id) %>
+  <%= render 'relationships/follow_button', user: user %>
   <hr>
 <% end %>
 <%= link_to "ホームへ戻る", root_path %>
