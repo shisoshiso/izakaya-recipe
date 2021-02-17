@@ -2,7 +2,6 @@
 
 <h1>ユーザー詳細ページ</h1>
 <h3>ユーザー名<%= @user.nickname %></h3>
-<%= render 'relationships/follow_button', user: @user %>
 <h2>＜投稿内容一覧＞</h2>
 <div class="contents row">
   <% @recipes.each do |recipe| %>
@@ -14,7 +13,7 @@
   <% end %>
 </div>
 
-<%= link_to "ユーザー一覧へ", users_path %>
+<%= link_to "フォロー一覧・フォロワー一覧へ", users_path(current_user) %>
 
 <h3>いいねしたレシピ一覧</h3>
 <% @favorited.each do |recipe| %>
