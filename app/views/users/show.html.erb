@@ -1,0 +1,21 @@
+<h1>ユーザー詳細ページ</h1>
+<h3>ユーザー名<%= @user.nickname %></h3>
+<h2>＜投稿内容一覧＞</h2>
+<div class="contents row">
+  <% @recipes.each do |recipe| %>
+    <div class="content_post" style="background-image: url(<%= recipe.image %>);">
+      <p>レシピ名：<%= recipe.name %></p>
+      <span class="name">レシピの説明：<%= recipe.explanation %></span>
+      <%= image_tag recipe.image.variant(resize: '500x500'), class: "item-img" if recipe.image.attached? %>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to "ユーザー一覧へ", users_path %>
+
+<h3>いいねしたレシピ一覧</h3>
+<% @favorited.each do |recipe| %>
+  <%= recipe.name %>
+  <%= image_tag recipe.image.variant(resize: '500x500'), class: "item-img" if recipe.image.attached? %>
+  <%= recipe.user.nickname %>
+<% end %>

@@ -2,6 +2,8 @@ class Recipe < ApplicationRecord
   belongs_to :user
   has_one_attached :image
   has_many :comments
+  has_many :favorites
+  has_many :favorited_users, through: :favorites, source: :user
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
@@ -21,6 +23,7 @@ class Recipe < ApplicationRecord
     validates :genre_id
   end
 
+  # データ検索を行うメソッド
   def self.search(search)
     if search != ''
       Recipe.where('name LIKE(?)', "%#{search}%")
@@ -28,4 +31,6 @@ class Recipe < ApplicationRecord
       Recipe.all.order('created_at DESC')
     end
   end
+  # /データ検索を行うメソッド
+
 end

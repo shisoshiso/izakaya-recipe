@@ -5,11 +5,13 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all.order('created_at DESC')
+    @user
   end
 
   def show
     @comment = Comment.new
     @comments = @recipe.comments.includes(:user)
+    @favorite = Favorite.new
   end
 
   def new

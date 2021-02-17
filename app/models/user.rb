@@ -4,6 +4,17 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :recipes, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorited, through: :favorites, source: :recipe
+
+  # いいねしているかどうかの判定を行うメソッド
+  def already_favorited?(recipe)
+    self.favorites.exists?(recipe_id: recipe.id)
+  end
+  # /いいねしているかどうかの判定を行うメソッド
+
   # バリデーションにemailの検証が必要かどうかを検証するメソッド
   def email_required?
     false
@@ -16,9 +27,7 @@ class User < ApplicationRecord
   def will_save_change_to_email?
     false
   end
-
-  has_many :recipes
-  has_many :comments
+  # /バリデーションにemailの検証が必要かどうかを検証するメソッド
 
   with_options presence: true do
     validates :nickname, length: { maximum: 30 }, uniqueness: { message: 'そのニックネームはすでに使用されています' } # uniqueはマイグレーションファイルに記述

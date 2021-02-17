@@ -30,7 +30,11 @@
       <tbody>
         <tr>
           <th class="detail-item">投稿者</th>
-          <td class="detail-value"><%= @recipe.user.nickname %></td>
+          <td class="detail-value">
+            <a href="/users/<%= @recipe.user.id %>">
+              <%= @recipe.user.nickname %>
+            </a>
+          </td>
         </tr>
         <tr>
           <th class="detail-item">カテゴリー</th>
@@ -49,7 +53,16 @@
     <div class="option">
       <div class="favorite-btn">
         <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
-        <span>お気に入り 0</span>
+        <h2>いいね件数<%= @recipe.favorites.count %></h2>
+        <% if current_user.already_favorited?(@recipe) %>
+          <%= button_to 'いいねを取り消す', recipe_favorites_path(@recipe), method: :delete %>
+        <% else %>
+          <%= button_to 'いいね', recipe_favorites_path(@recipe) %>
+        <% end %>
+        <h2>いいねしたユーザー</h2>
+        <% @recipe.favorited_users.each do |user| %>
+          <li><%= user.nickname %></li>
+        <% end %>
       </div>
       <div class="report-btn">
         <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
