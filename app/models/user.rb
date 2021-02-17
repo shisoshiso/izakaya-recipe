@@ -18,15 +18,10 @@ class User < ApplicationRecord
   end
   # /バリデーションにemailの検証が必要かどうかを検証するメソッド
 
-  has_many :recipes
-  has_many :comments
-  has_many :favorites
-
-  # いいねされているかを判定するメソッド
-  def already_favorited?(recipe)
-    self.favorites.exists?(recipe_id: recipe.id)
-  end
-  # /いいねされているかを判定するメソッド
+  has_many :recipes, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_recipes, through: :favorites, source: :favorites
 
   with_options presence: true do
     validates :nickname, length: { maximum: 30 }, uniqueness: { message: 'そのニックネームはすでに使用されています' } # uniqueはマイグレーションファイルに記述
