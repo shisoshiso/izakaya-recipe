@@ -4,4 +4,6 @@
   <%= render 'relationships/follow_button', user: user %>
   <hr>
 <% end %>
+
+<%= link_to "ユーザー詳細ページへ戻る", user_path(current_user.id) %>
 <%= link_to "ホームへ戻る", root_path %>
