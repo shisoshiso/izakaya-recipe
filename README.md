@@ -1,29 +1,55 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## アプリケーション名
+IzakayaRecipe
 
-Things you may want to cover:
+## :link: アプリケーションの概要
+<ul>
+  <li>居酒屋メニューに特化したレシピサイトです。</li>
+</ul>
 
-* Ruby version
+## App URL
+<ul>
+  <li>https://izakaya-recipe.herokuapp.com/</li>
+</ul>
 
-* System dependencies
+## テスト用アカウント
+<ul>
+  <li>ニックネーム  test1</li>
+  <li>パスワード  aaa111</li>
+</ul>
 
-* Configuration
+## 利用方法
+<ul>
+  <li>トップページからゲストログイン（閲覧用）をクリック</li>
+  <li>「レシピを見てみる」または「材料を探してみる」をクリックし、一覧画面へ遷移します</li>
+  <li>レシピのお気に入り登録やフォローすることが可能です（要ログイン）</li>
+</ul>
 
-* Database creation
+## :package: 使用技術
+- フロントエンド
+    - jQuery 1.12.4
+    - HTML/CSS/Haml/Sass
+- バックエンド
+    - ruby 2.6.5
+    - Ruby on Rails 6.0.0
+- インフラ
+    - nginx 1.12.2
+    - mysql 5.7.31
+    - AWS ( EC2, ALB, ACM, RDS, Route53, VPC, IAM )
+- その他使用ツール
+    - Visual Studio Code
+    - draw.io
 
-* Database initialization
+## :key: AWS構成図
+![aws](https://user-images.githubusercontent.com/66116053/105630353-0b1fd500-5e8c-11eb-9b5e-c02ae3471b3f.png)
 
-* How to run the test suite
+# DB設計
 
-* Services (job queues, cache servers, search engines, etc.)
+## ER図
+![database](https://raw.githubusercontent.com/shisoshiso/izakaya-recipe/master/ER.png)
 
-* Deployment instructions
-
-* ...
-
-# テーブル設計
+## 各テーブルについて
 
 ## users テーブル
 
@@ -128,3 +154,8 @@ Things you may want to cover:
 
 - belongs_to :user
 - belongs_to :recipe
+
+## ローカルでの動作方法
+<ul>
+  <li>git cloneしてから、ローカルで動作をさせるまでに必要なコマンドを記述しましょう。この時、アプリケーション開発に使用した環境を併記することを忘れないでください（パッケージやRubyのバージョンなど）</li>
+</ul>
