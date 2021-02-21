@@ -1,0 +1,80 @@
+= render "shared/header"
+.item-show
+  .item-box
+    %h2.name
+      = @recipe.name
+    .item-img-content
+      = image_tag @recipe.image ,class:"item-box-img"
+    .item-price-box
+      %span.item-price
+        = @recipe.material
+    - if (user_signed_in?) && (current_user.id == @recipe.user_id)
+      = link_to 'レシピの編集', edit_recipe_path(@recipe.id), method: :get, class: "item-red-btn"
+      %p.or-text or
+      = link_to '削除', recipe_path(@recipe.id), method: :delete, class:'item-destroy'
+    .item-explain-box
+      %span= @recipe.explanation
+    .item-explain-box
+      %span= @recipe.point
+    %table.detail-table
+      %tbody
+        %tr
+          %th.detail-item 投稿者
+          %td.detail-value
+            %a{:href => "/users/#{@recipe.user.id}"}
+              = @recipe.user.nickname
+        %tr
+          %th.detail-item カテゴリー
+          %td.detail-value= @recipe.category.name
+        %tr
+          %th.detail-item ジャンル
+          %td.detail-value= @recipe.genre.name
+        %tr
+          %th.detail-item お酒の種類
+          %td.detail-value= @recipe.alcohol.name
+    .option
+      .favorite-btn
+        = image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"
+        %h2
+          いいね件数#{@recipe.favorites.count}
+        - if current_user.already_favorited?(@recipe)
+          = button_to 'いいねを取り消す', recipe_favorites_path(@recipe), method: :delete
+        - else
+          = button_to 'いいね', recipe_favorites_path(@recipe)
+        %h2 いいねしたユーザー
+        - @recipe.favorited_users.each do |user|
+          %li= user.nickname
+      .report-btn
+        = image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"
+        %span 不適切なレシピの通報
+  .comment-box
+    - if user_signed_in?
+      = form_with(model: [@recipe, @comment], local: true) do |f|
+        = f.text_area :text, class:"comment-text", placeholder: "コメント欄", rows: "2"
+        %p.comment-warn
+          相手のことを考え丁寧なコメントを心がけましょう。
+          %br/
+          不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        = image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"
+        = f.submit "コメントする" ,class:"comment-btn"
+    - else
+      %strong
+        %p ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
+  .comments
+    %h4 ＜コメント一覧＞
+    - @comments.each do |comment|
+      %p
+        %strong
+          = link_to comment.user.nickname, "/users/#{comment.user_id}"
+          ：
+        = comment.text
+  .links
+    %a.change-item-btn{:href => "#"}
+      ＜ 前のレシピ
+    %a.change-item-btn{:href => "#"}
+      後ろのレシピ ＞
+  = link_to 'トップページへ戻る', root_path
+  %a.another-item{:href => "#"}
+    = @recipe.category.name
+    をもっと見る
+= render "shared/footer"

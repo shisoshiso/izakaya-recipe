@@ -1,0 +1,33 @@
+= render "shared/second-header"
+= form_with model: @user, url: user_registration_path, class: 'registration-main', local: true do |f|
+  .form-wrap
+    .form-header
+      %h1.form-header-text
+        会員情報入力
+    = render 'shared/error_messages', model: f.object
+    .form-group
+      .form-text-wrap
+        %label.form-text ニックネーム
+        %span.indispensable 必須
+      = f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"例) furima太郎", maxlength:"30"
+    .form-group
+      .form-text-wrap
+        %label.form-text パスワード
+        %span.indispensable 必須
+      = f.password_field :password, class:"input-default", id:"password", placeholder:"6文字以上の半角英数字"
+      %p.info-text ※英字と数字の両方を含めて設定してください
+    .form-group
+      .form-text-wrap
+        %label.form-text パスワード(確認)
+        %span.indispensable 必須
+      = f.password_field :password_confirmation, class:"input-default", id:"password-confirmation", placeholder:"同じパスワードを入力"
+    .form-group
+      %h2.form-bottom-text
+        「会員登録」のボタンを押すことにより、
+        %span 利用規約
+        = succeed "\u306B\u540C\u610F\u3057\u305F\u3082\u306E\u3068\u307F\u306A\u3057\u307E\u3059" do
+          %br/
+    .register-btn
+      = f.submit "会員登録" ,class:"register-red-btn"
+    %p.register-info 本人情報の登録について
+= render "shared/second-footer"

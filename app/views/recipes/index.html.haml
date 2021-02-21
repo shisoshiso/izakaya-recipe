@@ -1,0 +1,65 @@
+= render "shared/header"
+.main
+  .u-containt
+    .item-contents
+      %h2.title 人気レシピ
+      %ul.item-lists
+        - @recipes.each do |recipe|
+          %li.list
+            = link_to recipe_path(recipe.id) do
+              .item-img-content
+                = image_tag recipe.image.variant(resize: '500x500'), class: "item-img" if recipe.image.attached?
+              .item-info
+                %h3.item-name
+                  = recipe.name
+                .item-price
+                  %span.name
+                    %a{:href => "/users/#{recipe.user.id}"}
+                      %span 投稿者
+                      = recipe.user.nickname
+                  .star-btn
+                    = image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"
+                    %span.star-count
+                      = recipe.favorited_users.count
+        - unless @recipes.exists?
+          %li.list
+            = link_to '#' do
+              = image_tag "sample_cucumber.png", class: "item-img"
+              .item-info
+                %h3.item-name
+                  レシピを投稿してね！
+                .item-price
+                  .star-btn
+                    - image_tag "star.png", class:"star-icon"
+                    %span.star-count 0
+  .l-containt
+    .item-contents
+      %h2.title 新着レシピ
+      %ul.item-lists
+        - @recipes.each do |recipe|
+          %li.list
+            = link_to recipe_path(recipe.id) do
+              .item-img-content
+                = image_tag recipe.image.variant(resize: '500x500'), class: "item-img" if recipe.image.attached?
+              .item-info
+                %h3.item-name
+                  = recipe.name
+                .item-price
+                  %span= recipe.material
+                  .star-btn
+                    - image_tag "star.png", class:"star-icon"
+                    %span.star-count 0
+        - unless @recipes.exists?
+          %li.list
+            = link_to '#' do
+              = image_tag "sample_cucumber.png", class: "item-img"
+              .item-info
+                %h3.item-name
+                  レシピを投稿してね！
+                .item-price
+                  .star-btn
+                    - image_tag "star.png", class:"star-icon"
+                    %span.star-count 0
+= link_to(new_recipe_path, class: 'purchase-btn') do
+  %span.purchase-btn-text 投稿する
+= render "shared/footer"

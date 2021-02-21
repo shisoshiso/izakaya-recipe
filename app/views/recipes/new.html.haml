@@ -1,0 +1,64 @@
+%body
+  .items-sell-contents
+    %header.items-sell-header
+      = link_to root_path, class: "apple-btn" do
+        Izakaya Recipe
+    .items-sell-main
+      %h2.items-sell-title レシピの情報を入力
+      = form_with model: @recipe,local: true do |f|
+        = render 'shared/error_messages', model: f.object
+        .img-upload
+          .weight-bold-text
+            レシピ画像
+            %span.indispensable 必須
+          .click-upload
+            %p
+              クリックしてファイルをアップロード
+            = f.file_field :image, id:"item-image"
+        .new-items
+          .weight-bold-text
+            レシピ名
+            %span.indispensable 必須
+          = f.text_area :name, class:"items-text", id:"item-name", placeholder:"レシピ名（必須 30文字まで)", maxlength:"30"
+          .items-explain
+            .weight-bold-text
+              材料
+              %span.indispensable 必須
+            = f.text_area :material, class:"items-text", id:"item-info", placeholder:"材料（必須 1,000文字まで）きゅうりのたたきの例）・きゅうり：1本・塩：適量・ごま油：大さじ1・ごま：適量" ,rows:"10" ,maxlength:"1000"
+          .items-explain
+            .weight-bold-text
+              説明
+              %span.indispensable 必須
+            = f.text_area :explanation, class:"items-text", id:"item-info", placeholder:"レシピ手順の説明（必須 1,000文字まで）きゅうりのたたきの例）1.きゅうりを一口サイズにします。2.ボールに入れ、塩揉みします。3.冷蔵庫で10分ほど冷やします。4.調味料を混ぜて完成です。" ,rows:"10" ,maxlength:"1000"
+          .items-explain
+            .weight-bold-text
+              ポイント
+            = f.text_area :point, class:"items-text", id:"item-info", placeholder:"レシピのポイント（100文字まで）きゅうりのたたきの例）冷やすことでおいしくなります。" ,rows:"2" ,maxlength:"100"
+        .items-detail
+          .weight-bold-text レシピの詳細
+          .form
+            .weight-bold-text
+              合うお酒の種類
+              %span.indispensable 必須
+            = f.collection_select(:alcohol_id, Alcohol.all, :id, :name, {}, {class:"select-box", id:"item-category"})
+            .weight-bold-text
+              カテゴリー
+              %span.indispensable 必須
+            = f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"item-category"})
+            .weight-bold-text
+              ジャンル
+              %span.indispensable 必須
+            = f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"select-box", id:"item-sales-status"})
+        .sell-btn-contents
+          = f.submit "投稿する" ,class:"sell-btn"
+          = link_to 'もどる', recipes_path, class:"back-btn"
+    %footer.items-sell-footer
+      %ul.menu
+        %li
+          %a{:href => "#"} プライバシーポリシー
+        %li
+          %a{:href => "#"} IzakayaRecipe利用規約
+        %li
+          %a{:href => "#"} 特定商取引に関する表記
+      %p.inc
+        Copyright ©️ 2021 Soshi Kono

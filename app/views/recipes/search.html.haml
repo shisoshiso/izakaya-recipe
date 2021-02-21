@@ -1,0 +1,10 @@
+= render "shared/header"
+.contents.row
+  - @recipes.each do |recipe|
+    .content_post
+      = image_tag recipe.image.variant(resize: '500x500'), class: "item-img" if recipe.image.attached?
+      %p= recipe.name
+      %span.name
+        %a{:href => "/users/#{recipe.user.id}"}
+          %span レシピ投稿者
+          = recipe.user.nickname
