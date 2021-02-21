@@ -6,7 +6,7 @@ class RelationshipsController < ApplicationController
     return unless following.save
 
     flash[:notice] = 'ユーザーをフォローしました'
-    redirect_to users_path(@user)
+    redirect_to user_path(@user)
   end
 
   def destroy
@@ -14,7 +14,7 @@ class RelationshipsController < ApplicationController
     return unless following.destroy
 
     flash[:notice] = 'ユーザーのフォローを解除しました'
-    redirect_to users_path(@user)
+    redirect_to user_path(@user)
   end
 
   private
