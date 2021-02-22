@@ -24,6 +24,7 @@
                       = image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"
                       %span.star-count
                         = recipe.favorited_users.count
+
           - unless @recipes.exists?
             %li.list
               = link_to '#' do
@@ -57,6 +58,7 @@
                       = image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"
                       %span.star-count
                         = recipe.favorited_users.count
+                        
           - unless @recipes.exists?
             %li.list
               = link_to '#' do
@@ -89,6 +91,7 @@
               %p.r-subtitle 料理人の名前
 
 = link_to(new_recipe_path, class: 'purchase-btn') do
-  %span.purchase-btn-text 投稿する
+  %span.purchase-btn-text レシピを投稿する
 
 = render "shared/footer"
+
