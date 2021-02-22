@@ -1,0 +1,22 @@
+= render "shared/second-header"
+= form_with model: @user, url: user_session_path, class: 'registration-main', local: true do |f|
+  .form-wrap
+    .form-header
+      %h1.form-header-text
+        会員情報入力
+    .login-flash-message
+      = flash[:notice]
+      = flash[:alert]
+    .form-group
+      .form-text-wrap
+        %label.form-text ニックネーム
+        %span.indispensable 必須
+      = f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"例) furima太郎", maxlength:"30"
+    .form-group
+      .form-text-wrap
+        %label.form-text パスワード
+        %span.indispensable 必須
+      = f.password_field :password, class:"input-default", id:"password", placeholder:""
+    .login-btn
+      = f.submit "ログイン" ,class:"login-red-btn"
+= render "shared/second-footer"

@@ -1,0 +1,20 @@
+%header.top-page-header
+  .search-bar-contents
+    = link_to root_path, class: "apple-btn" do
+      Izakaya Recipe
+    = form_with(url: search_recipes_path, local: true, method: :get, class: "search-form") do |form|
+      = form.text_field :keyword, placeholder: "キーワードから探す", class: "input-box"
+      = form.submit "検索", class: "search-button"
+  .nav
+    %ul.lists-left
+      %li= link_to 'カテゴリー', "#", class: "category-list"
+      %li= link_to 'ジャンル', "#", class: "brand-list"
+    %ul.lists-right
+      - if user_signed_in?
+        %li
+          = link_to current_user.nickname, "/users/#{current_user.id}", class: "user-nickname"
+        %li
+          = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout"
+      - else
+        %li= link_to 'ログイン', new_user_session_path, class: "login"
+        %li= link_to '新規登録', new_user_registration_path, class: "sign-up"
