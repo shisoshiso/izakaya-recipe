@@ -15,27 +15,6 @@ class User < ApplicationRecord
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
   has_many :followers, through: :reverse_of_relationships, source: :user
 
-  def follow(other_user)
-    unless self == other_user
-      self.relationships.find_or_create_by(follow_id: other_user.id)
-    end
-  end
-
-  def unfollow(other_user)
-    relationship = self.relationships.find_by(follow_id: other_user.id)
-    relationship.destroy if relationship
-  end
-
-  def following?(other_user)
-    self.followings.include?(other_user)
-  end
-
-
-  # いいねしているかどうかを判定する
-  def already_favorited?(recipe)
-    self.favorites.exists?(recipe_id: recipe.id)
-  end
-  
   # バリデーションにemailの検証が必要かどうかを検証する
   def email_required?
     false
@@ -49,6 +28,25 @@ class User < ApplicationRecord
     false
   end
   # /バリデーションにemailの検証が必要かどうかを検証するメソッド
+
+    # いいねしているかどうかを判定する
+    def already_favorited?(recipe)
+      self.favorites.exists?(recipe_id: recipe.id)
+    end
+    # /いいねしているかどうかを判定する
+
+  def follow(other_user)
+    relationships.find_or_create_by(follow_id: other_user.id) unless self == other_user
+  end
+
+  def unfollow(other_user)
+    relationship = relationships.find_by(follow_id: other_user.id)
+    relationship&.destroy
+  end
+
+  def following?(other_user)
+    followings.include?(other_user)
+  end
 
   # バリデーションの設定
   with_options presence: true do
