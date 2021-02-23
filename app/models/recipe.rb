@@ -32,5 +32,4 @@ class Recipe < ApplicationRecord
     end
   end
   # /データ検索を行うメソッド
-
 end

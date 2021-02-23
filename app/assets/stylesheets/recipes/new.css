@@ -1,6 +1,5 @@
 /* border-bottom: 1px solid #eee; */
 
-
 .items-sell-contents {
   background-color: #f5f5f5;
   font-family: "Source Sans Pro", Helvetica, Arial, "æ¸¸ã‚´ã‚·ãƒƒã‚¯ä½“", "YuGothic", "ãƒ¡ã‚¤ãƒªã‚ª", "Meiryo", sans-serif;
@@ -226,4 +225,10 @@
 
 .inc {
   font-size: 13px;
+}
+
+img {
+  height: 30px;
+  width: 30px;
+  object-fit: contain;
 }
