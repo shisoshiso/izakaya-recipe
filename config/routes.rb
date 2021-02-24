@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   root 'recipes#index'
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
-    :sessions => 'users/sessions'   
+    :passwords => 'users/passwords',
+    :sessions => 'users/sessions'
   } 
 
   devise_scope :user do
