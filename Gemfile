@@ -69,3 +69,6 @@ gem 'haml-rails'
 
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
+
+gem 'devise-i18n'
+gem 'devise-i18n-views'
