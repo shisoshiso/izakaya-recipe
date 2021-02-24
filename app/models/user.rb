@@ -27,14 +27,19 @@ class User < ApplicationRecord
   def will_save_change_to_email?
     false
   end
-  # /バリデーションにemailの検証が必要かどうかを検証するメソッド
 
-    # いいねしているかどうかを判定する
-    def already_favorited?(recipe)
-      self.favorites.exists?(recipe_id: recipe.id)
+  def self.guest
+    find_or_create_by!(nickname: 'guest') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
     end
-    # /いいねしているかどうかを判定する
-
+  end
+  
+  # いいねしているかどうかを判定する
+  def already_favorited?(recipe)
+    self.favorites.exists?(recipe_id: recipe.id)
+  end
+  
   def follow(other_user)
     relationships.find_or_create_by(follow_id: other_user.id) unless self == other_user
   end
