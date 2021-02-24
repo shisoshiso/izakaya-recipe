@@ -34,12 +34,12 @@ class User < ApplicationRecord
       # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
     end
   end
-  
+
   # いいねしているかどうかを判定する
   def already_favorited?(recipe)
     self.favorites.exists?(recipe_id: recipe.id)
   end
-  
+
   def follow(other_user)
     relationships.find_or_create_by(follow_id: other_user.id) unless self == other_user
   end
