@@ -1,5 +1,5 @@
 .jumbotron{
-  background-image: url('../../images/comment.png');
+  background-image: image-url('../../images/fish.png');
   background-size: cover;
   width: 100%;
   height: 100vh;
@@ -21,4 +21,8 @@
 
 .index-btn{
   margin-top: 20px;
+}
+
+.main{
+  background-color:white;
 }
