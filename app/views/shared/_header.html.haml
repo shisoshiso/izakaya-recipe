@@ -1,21 +1,49 @@
-%header.top-page-header
-  .search-bar-contents
-    = link_to root_path, class: "apple-btn" do
-      Izakaya Recipe
-    = form_with(url: search_recipes_path, local: true, method: :get, class: "search-form") do |form|
-      = form.text_field :keyword, placeholder: "キーワードから探す", class: "input-box"
-      = form.submit "検索", class: "search-button"
-  .nav
-    %ul.lists-left
-      %li= link_to 'カテゴリー', "#", class: "category-list"
-      %li= link_to 'ジャンル', "#", class: "brand-list"
-    %ul.lists-right
+%nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top{:style => "background-color: #e3f2fd;"}
+  = link_to root_path, class: "navbar-brand" do
+    Izakaya Recipe
+  = form_with(url: search_recipes_path, local: true, method: :get, class: "search-form form-inline my-2 my-lg-0") do |form|
+    .form-group
+      = form.text_field :keyword, placeholder: "キーワードから探す", class: "input-box form-control mr-sm-2"
+      = form.submit "レシピ検索", class: "search-button btn btn-primary my-2 my-sm-0"
+
+  %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+    %span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
+    %ul.navbar-nav.mr-auto
+      %li.nav-item.active
+        %a.nav-link{:href => "#"}
+          ランキング
+          %span.sr-only (current)
+      %li.nav-item.active
+        %a.nav-link{:href => "#"}
+          お酒別
+          %span.sr-only (current)
+      %li.nav-item.active
+        %a.nav-link{:href => "#"}
+          カテゴリ
+          %span.sr-only (current)
+      %li.nav-item.active
+        %a.nav-link{:href => "#"}
+          ジャンル
+          %span.sr-only (current)
+      %li.nav-item.active
+        %a.nav-link{:href => "#"}
+          投稿者検索
+          %span.sr-only (current)
+      %li.nav-item.active
+        %a.nav-link{:href => "#"}
+          IzakayaRecipeとは
+          %span.sr-only (current)
+
       - if user_signed_in?
-        %li
-          = link_to current_user.nickname, "/users/#{current_user.id}", class: "user-nickname"
-        %li
-          = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout"
+        %li.nav-item.active
+          = link_to current_user.nickname, "/users/#{current_user.id}", class: "user-nickname nav-link"
+        %li.nav-item.active
+          = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout nav-link"
       - else
-        %li= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "guest-login", method: :post
-        %li= link_to 'ログイン', new_user_session_path, class: "login"
-        %li= link_to '新規登録', new_user_registration_path, class: "sign-up"
+        %li.nav-item.active
+          = link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "guest-login nav-link", method: :post
+        %li.nav-item.active
+          = link_to 'ログイン', new_user_session_path, class: "login nav-link"
+        %li.nav-item.active
+          = link_to '新規登録', new_user_registration_path, class: "sign-up nav-link"
