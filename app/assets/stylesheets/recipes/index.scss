@@ -1,86 +1,24 @@
-a {
-  text-decoration: none;
+.jumbotron{
+  background-image: url('../../images/comment.png');
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
 }
 
-.main {
-  background: #f8f8f8;
-}
-
-
-/* レシピ投稿一覧 */
-.l-container>.title {
-  font-size: 5vh;
-  line-height: 1.4;
+.home-index{
   font-weight: bold;
+  font-size: 50px;
+  color: white;
+  text-shadow:0 0 10px blue;
 }
 
-.recipe-contents {
-  background-color: #FFF;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10vh 0;
+.index-content{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
 
-.recipe-contents>.subtitle {
-  font-size: 3vh;
-  margin: 1vh 0;
-  text-decoration: none;
-  color: #3ccace;
-  font-weight: bold;
+.index-btn{
+  margin-top: 20px;
 }
-
-.recipe-lists {
-  width: 100vw;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.recipe-lists>.list {
-  width: 37vh;
-  padding: 1vw;
-  background-color: #FFF;
-}
-
-
-.recipe-img-content {
-  position: relative;
-}
-
-.recipe-img {
-  width: 33vh;
-  height: 33vh;
-}
-
-.recipe-info {
-  background-color: #FFF;
-  color: black;
-  padding: 1vw;
-}
-
-.recipe-name {
-  font-size: 2.5vh;
-}
-
-.recipe-contributor {
-  font-size: 1.5vh;
-  display: flex;
-  justify-content: space-between;
-}
-
-.star-btn {
-  display: flex;
-  align-items: center;
-}
-
-.star-icon {
-  height: 2vh;
-  width: 2vh;
-  margin-right: 0.5vw;
-}
-
-.star-count {
-  font-size: 2vh;
-}
-/* //レシピ投稿一覧 */
