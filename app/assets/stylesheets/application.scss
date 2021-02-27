@@ -15,6 +15,10 @@
  *= require_tree .
 */
 
+* {
+  box-sizing: border-box;
+}
+
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 @import './recipes/index.scss';
