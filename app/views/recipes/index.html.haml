@@ -25,7 +25,7 @@
                       = image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"
                       %span.star-count
                         = recipe.favorited_users.count
-                        
+
       .col-md-4
         %p.h3 トピックス
         %br/
@@ -76,5 +76,8 @@
         %p Bさん
         %br/
         %p Cさん
+
+= link_to(new_recipe_path, class: 'make-btn') do
+  %span.make-btn-text レシピを投稿する
 
 = render "shared/footer"

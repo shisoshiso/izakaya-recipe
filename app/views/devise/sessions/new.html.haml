@@ -4,9 +4,12 @@
     .form-header
       %h1.form-header-text
         会員情報入力
+    = render 'shared/error_messages', model: f.object
+
     -#.login-flash-message
       -# = flash[:notice]
       -# = flash[:alert]
+
     .form-group
       .form-text-wrap
         %label.form-text ニックネーム
