@@ -1,21 +1,22 @@
 = render "shared/header"
 
 .main
-  .l-container
-    .title レシピ一覧
-    .lu-container
-      .recipe-contents
-        %p.subtitle 人気レシピ一覧
-        %ul.recipe-lists
+  .container.container-m
+    .row
+      .col-md-8.img-hidden
+        %p.h3 新着レシピ
+        %ul.card-deck
           - @recipes.each do |recipe|
-            %li.list
-              = link_to recipe_path(recipe.id) do
-                .recipe-img-content
+            = link_to recipe_path(recipe.id) do
+              .card
+                .card-body.recipe-img-content
                   = image_tag recipe.image.variant(resize: '500x500'), class: "recipe-img" if recipe.image.attached?
                 .recipe-info
-                  %h3.recipe-name
+                  %h3.recipe-name.card-title
                     = recipe.name
-                  .recipe-contributor
+                  %h3.recipe-point.card-point
+                    = recipe.point
+                  .recipe-contributor.card-text
                     %span.name
                       %a{:href => "/users/#{recipe.user.id}"}
                         %span 投稿者
@@ -25,31 +26,40 @@
                       %span.star-count
                         = recipe.favorited_users.count
 
-          - unless @recipes.exists?
-            %li.list
-              = link_to '#' do
-                = image_tag "sample_cucumber.png", class: "recipe-img"
-                .recipe-info
-                  %h3.recipe-name
-                    レシピを投稿してね！
-                  .recipe-contributor
-                    .star-btn
-                      - image_tag "star.png", class:"star-icon"
-                      %span.star-count 0
+      .col-md-4
+        %p.h3 トピックス
+        %br/
+        %p
+          2021/2/27（土）
+          %br>/
+          トップページを更新しました！
+        %br/
+        %p
+          2021/2/20（土）
+          %br>/
+          一部機能を追加しました！
+        %br/
+        %p
+          2021/2/14（土）
+          %br>/
+          サービスを開始しました！
 
-    .ll-container
-      .recipe-contents
-        %p.subtitle 新着レシピ一覧
-        %ul.recipe-lists
+  .container.container-m
+    .row
+      .col-md-8.img-hidden
+        %p.h3 人気レシピ
+        %ul.card-deck
           - @recipes.each do |recipe|
-            %li.list
-              = link_to recipe_path(recipe.id) do
-                .recipe-img-content
+            = link_to recipe_path(recipe.id) do
+              .card
+                .card-body.recipe-img-content
                   = image_tag recipe.image.variant(resize: '500x500'), class: "recipe-img" if recipe.image.attached?
                 .recipe-info
-                  %h3.recipe-name
+                  %h3.recipe-name.card-title
                     = recipe.name
-                  .recipe-contributor
+                  %h3.recipe-point.card-point
+                    = recipe.point
+                  .recipe-contributor.card-text
                     %span.name
                       %a{:href => "/users/#{recipe.user.id}"}
                         %span 投稿者
@@ -58,40 +68,16 @@
                       = image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"
                       %span.star-count
                         = recipe.favorited_users.count
-                        
-          - unless @recipes.exists?
-            %li.list
-              = link_to '#' do
-                = image_tag "sample_cucumber.png", class: "recipe-img"
-                .recipe-info
-                  %h3.recipe-name
-                    レシピを投稿してね！
-                  .recipe-contributor
-                    .star-btn
-                      - image_tag "star.png", class:"star-icon"
-                      %span.star-count 0
+      .col-md-4
+        %p.h3 レシピ投稿者一覧
+        %br/
+        %p Aさん
+        %br/
+        %p Bさん
+        %br/
+        %p Cさん
 
-  .r-container
-    .ru-container
-      %p.r-title トピックス
-      %ul.lists
-        - 3.times do |i|
-          %li.list
-            %a{:href => "#" }
-              .column-info
-                %p.time-stamp トピックスが投稿された日付
-              %p.r-subtitle トピックス
-
-    .rl-container
-      %p.r-title 料理家一覧
-      %ul.lists
-        - 3.times do |i| #料理人の数
-          %li.list
-            %a{:href => "#" }
-              %p.r-subtitle 料理人の名前
-
-= link_to(new_recipe_path, class: 'purchase-btn') do
-  %span.purchase-btn-text レシピを投稿する
+= link_to(new_recipe_path, class: 'make-btn') do
+  %span.make-btn-text レシピを投稿する
 
 = render "shared/footer"
-

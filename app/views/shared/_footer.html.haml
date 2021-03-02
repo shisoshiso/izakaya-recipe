@@ -1,20 +1,23 @@
-.footer
-  .footer-contents
-    .furima-details
-      %h2.footer-content-head Izakaya Recipeについて
-      %ul
-        %li= link_to '会社概要（運営会社)', "#", class: "footer-link"
-        %li= link_to 'プライバシーポリシー', "#", class: "footer-link"
-        %li= link_to 'Izakaya Recipe利用規約', "#", class: "footer-link"
-    .furima-details
-      %h2.footer-content-head レシピを見る
-      %ul
-        %li= link_to 'カテゴリー一覧', "#", class: "footer-link"
-        %li= link_to 'ジャンル一覧', "#", class: "footer-link"
-        %li= link_to 'アルコール一覧', "#", class: "footer-link"
-    .furima-details
-      %h2.footer-content-head Izakaya Recipeについて
-      %ul
-        %li= link_to 'Izakaya Recipeとは', "#", class: "footer-link"
-        %li= link_to 'お知らせ', "#", class: "footer-link"
-  %p Copyright ©️ 2021 Soshi Kono
+.footer.navbar-expand-lg
+  .card-deck
+    .card
+      .card-body
+        %ul
+          %h2.card-text 会社概要
+          %li= link_to '会社概要（運営会社)', "#", class: "footer-link card-text"
+          %li= link_to 'プライバシーポリシー', "#", class: "footer-link card-text"
+          %li= link_to 'Izakaya Recipe利用規約', "#", class: "footer-link card-text"
+    .card
+      .card-body
+        %ul
+          %h2.card-text レシピを見る
+          %li= link_to 'カテゴリー一覧', "#", class: "footer-link card-text"
+          %li= link_to 'ジャンル一覧', "#", class: "footer-link card-text"
+          %li= link_to 'アルコール一覧', "#", class: "footer-link card-text"
+    .card
+      .card-body
+        %ul
+          %h2.card-text Izakaya Recipeについて
+          %li= link_to 'Izakaya Recipeとは', "#", class: "footer-link card-text"
+          %li= link_to 'お知らせ', "#", class: "footer-link card-text"
+  %p.text-center Copyright ©️ 2021 Soshi Kono

@@ -2,11 +2,11 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title IzakayaRecipe
+    %title 居酒屋レシピ
     = csrf_meta_tags
     = csp_meta_tag
     %link{:href => "http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css", :rel => "stylesheet", :type => "text/css"}/
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_pack_tag 'application'
   %body
     = yield

@@ -1,5 +1,6 @@
 = render "shared/header"
-.contents.row
+
+.contents.row.main
   - @recipes.each do |recipe|
     .content_post
       = image_tag recipe.image.variant(resize: '500x500'), class: "item-img" if recipe.image.attached?
