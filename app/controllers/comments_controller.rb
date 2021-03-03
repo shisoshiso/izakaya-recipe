@@ -1,7 +1,13 @@
 class CommentsController < ApplicationController
   def create
-    comment = Comment.create(comment_params)
-    redirect_to "/recipes/#{comment.recipe.id}"
+    @comment = Comment.new(comment_params)
+    if @comment.save
+      redirect_to recipe_path(@comment.prototype)
+    else
+      @recipe = @comment.recipe
+      @comments = @recipe.comments
+      render "recipes/show"
+    end
   end
 
   private

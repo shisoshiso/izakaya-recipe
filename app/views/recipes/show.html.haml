@@ -51,6 +51,7 @@
   .comment-box
     - if user_signed_in?
       = form_with(model: [@recipe, @comment], local: true) do |f|
+        = render 'shared/error_messages', model: f.object
         = f.text_area :text, class:"comment-text", placeholder: "コメント欄", rows: "2"
         %p.comment-warn
           相手のことを考え丁寧なコメントを心がけましょう。
