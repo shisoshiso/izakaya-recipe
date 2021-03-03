@@ -1,14 +1,13 @@
 = render "shared/second-header"
-= form_with model: @user, url: user_session_path, class: 'registration-main', local: true do |f|
+= form_with model: @user, url: user_session_path, id: 'new_user', class: 'registration-main', local: true do |f|
   .form-wrap
     .form-header
       %h1.form-header-text
         会員情報入力
     = render 'shared/error_messages', model: f.object
 
-    -#.login-flash-message
-      -# = flash[:notice]
-      -# = flash[:alert]
+    .login-flash-message
+      = flash[:alert]
 
     .form-group
       .form-text-wrap
