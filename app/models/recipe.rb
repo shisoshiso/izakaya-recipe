@@ -17,7 +17,7 @@ class Recipe < ApplicationRecord
     validates :explanation
   end
 
-  with_options presence: true, numericality: { other_than: 1 } do
+  with_options presence: true, numericality: { other_than: 1, message: 'を選択してください' } do
     validates :alcohol_id
     validates :category_id
     validates :genre_id

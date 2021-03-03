@@ -6,10 +6,10 @@ ja:
           attributes:
             nickname:
               blank: "が空になっています"
-            email:
-              taken: "は既に使用されています。"
-              blank: "が入力されていません。"
-              invalid: "は有効でありません。"
+            # email:
+            #   taken: "は既に使用されています。"
+            #   blank: "が入力されていません。"
+            #   invalid: "は有効でありません。"
             password:
               taken: "は既に使用されています。"
               blank: "が入力されていません。"

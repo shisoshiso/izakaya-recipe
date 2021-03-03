@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      recipe:
+    attributes:
+      recipe:
+        image: レシピ画像
+        name: レシピ名
+        material: 材料
+        explanation: 説明
+        alcohol_id: お酒の種類
+        category_id: カテゴリ
+        genre_id: ジャンル
+      comment:
+        text: コメント

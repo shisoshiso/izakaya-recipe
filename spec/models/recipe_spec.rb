@@ -32,6 +32,11 @@ RSpec.describe Recipe, type: :model do
         @recipe.valid?
         expect(@recipe.errors.full_messages).to include("Material can't be blank")
       end
+      it 'explanationが空では保存できないこと' do
+        @recipe.explanation = nil
+        @recipe.valid?
+        expect(@recipe.errors.full_messages).to include("Explanation can't be blank")
+      end
       it 'alcoholが空では保存できないこと' do
         @recipe.alcohol_id = nil
         @recipe.valid?
@@ -40,7 +45,7 @@ RSpec.describe Recipe, type: :model do
       it 'alcoholが---では保存できないこと' do
         @recipe.alcohol_id = 1
         @recipe.valid?
-        expect(@recipe.errors.full_messages).to include('Alcohol must be other than 1')
+        expect(@recipe.errors.full_messages).to include('Alcohol を選択してください')
       end
       it 'categoryが空では保存できないこと' do
         @recipe.category_id = nil
@@ -50,7 +55,7 @@ RSpec.describe Recipe, type: :model do
       it 'categoryが---では保存できないこと' do
         @recipe.category_id = 1
         @recipe.valid?
-        expect(@recipe.errors.full_messages).to include('Category must be other than 1')
+        expect(@recipe.errors.full_messages).to include('Category を選択してください')
       end
       it 'genreが空では保存できないこと' do
         @recipe.genre_id = nil
@@ -60,12 +65,7 @@ RSpec.describe Recipe, type: :model do
       it 'genreが---では保存できないこと' do
         @recipe.genre_id = 1
         @recipe.valid?
-        expect(@recipe.errors.full_messages).to include('Genre must be other than 1')
-      end
-      it 'explanationが空では保存できないこと' do
-        @recipe.explanation = nil
-        @recipe.valid?
-        expect(@recipe.errors.full_messages).to include("Explanation can't be blank")
+        expect(@recipe.errors.full_messages).to include('Genre を選択してください')
       end
       it 'userが紐付いていないと保存できないこと' do
         @recipe.user = nil
