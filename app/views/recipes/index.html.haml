@@ -10,7 +10,7 @@
             = link_to recipe_path(recipe.id) do
               .card
                 .card-body.recipe-img-content
-                  = image_tag recipe.image.variant(resize: '500x500'), class: "recipe-img" if recipe.image.attached?
+                  = image_tag recipe.image.variant(resize: '500x500'), class: "img-fluid recipe-img" if recipe.image.attached?
                 .recipe-info
                   %h3.recipe-name.card-title
                     = recipe.name
@@ -68,14 +68,6 @@
                       = image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"
                       %span.star-count
                         = recipe.favorited_users.count
-      .col-md-4
-        %p.h3 レシピ投稿者一覧
-        %br/
-        %p Aさん
-        %br/
-        %p Bさん
-        %br/
-        %p Cさん
 
 = link_to(new_recipe_path, class: 'make-btn') do
   %span.make-btn-text レシピを投稿する
