@@ -1,8 +1,7 @@
 = render "shared/header"
 
 .main
-  = image_tag "izakaya2.jpg" ,class:"img-fluid hero-img"
-  .container.container-m
+  .container
     .row
       .col-md-8.img-hidden
         %p.h3 新着レシピ
@@ -48,31 +47,6 @@
           2021/2/14（土）
           %br>/
           サービスを開始しました！
-
-  .container.container-m
-    .row
-      .col-md-8.img-hidden
-        %p.h3 人気レシピ
-        %ul.card-deck
-          - @recipes.each do |recipe|
-            = link_to recipe_path(recipe.id) do
-              .card
-                .card-body.recipe-img-content
-                  = image_tag recipe.image.variant(resize: '500x500'), class: "recipe-img" if recipe.image.attached?
-                .recipe-info
-                  %h3.recipe-name.card-title
-                    = recipe.name
-                  %h3.recipe-point.card-point
-                    = recipe.point
-                  .recipe-contributor.card-text
-                    %span.name
-                      %a{:href => "/users/#{recipe.user.id}"}
-                        %span 投稿者
-                        = recipe.user.nickname
-                    .star-btn
-                      = image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"
-                      %span.star-count
-                        = recipe.favorited_users.count
 
 = link_to(new_recipe_path, class: 'make-btn') do
   %span.make-btn-text レシピを投稿する
