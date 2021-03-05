@@ -1,11 +1,20 @@
+.logo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .main{
-  margin-top: 80px;
+  padding-top: 200px;
 }
 
 
+
+
+
 .make-btn {
-  width: 120px;
-  background: #3ccace;
+  width: 100px;
+  background: black;
   text-align: center;
   border-radius: 4%;
   bottom: 32px;

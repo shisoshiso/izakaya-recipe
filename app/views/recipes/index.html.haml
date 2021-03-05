@@ -1,36 +1,29 @@
 = render "shared/header"
 
 .main
-  .container
+  .container-fluid
+    %p.h3.mb-3.ml-3 新着レシピ
     .row
-      .col-md-8.img-hidden
-        %p.h3 新着レシピ
-        %ul.card-deck
+      .col-sm-9
+        .card-group
           - @recipes.each do |recipe|
             = link_to recipe_path(recipe.id) do
-              .card
-                .card-body.recipe-img-content
-                  = image_tag recipe.image.variant(resize: '500x500'), class: "img-fluid recipe-img" if recipe.image.attached?
-                .recipe-info
-                  %h3.recipe-name.card-title
-                    = recipe.name
-                  %h3.recipe-point.card-point
-                    = recipe.point
-                  .recipe-contributor.card-text
-                    %span.name
-                      %a{:href => "/users/#{recipe.user.id}"}
-                        %span 投稿者
-                        = recipe.user.nickname
-                    .star-btn
-                      = image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"
-                      %span.star-count
-                        = recipe.favorited_users.count
-
-      .col-md-4
-        = form_with(url: search_recipes_path, local: true, method: :get, class: "form-inline") do |form|
-          .form-group
-            = form.text_field :keyword, placeholder: "キーワードから探す", class: "form-control col-8"
-            = form.submit "レシピ検索", class: "search-button btn btn-primary col-3"
+              .col-sm-4.mb-3
+                .card.img-hidden.text-center
+                  .card-img-top
+                    = image_tag recipe.image.variant(resize: '500x500'), class: "img-fluid recipe-img" if recipe.image.attached?
+                  .card-body
+                    %p.card-title
+                      = recipe.name
+                    %p.text-muted.recipe-contributor
+                      %span.name
+                        %a{:href => "/users/#{recipe.user.id}"}
+                          = recipe.user.nickname
+                      .star-btn
+                        = image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"
+                        %span.star-count
+                          = recipe.favorited_users.count
+      .col-sm-3
         %p.h3 トピックス
         %br/
         %p
@@ -48,7 +41,30 @@
           %br>/
           サービスを開始しました！
 
+  .container-fluid.mt-5
+    %p.h3.mb-3.ml-3 人気レシピ
+    .row
+      .col-sm-9
+        .card-group
+          - @recipes.each do |recipe|
+            = link_to recipe_path(recipe.id) do
+              .col-sm-4.mb-3
+                .card.img-hidden.text-center
+                  .card-img-top
+                    = image_tag recipe.image.variant(resize: '500x500'), class: "img-fluid recipe-img" if recipe.image.attached?
+                  .card-body
+                    %p.card-title
+                      = recipe.name
+                    %p.text-muted.recipe-contributor
+                      %span.name
+                        %a{:href => "/users/#{recipe.user.id}"}
+                          = recipe.user.nickname
+                      .star-btn
+                        = image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"
+                        %span.star-count
+                          = recipe.favorited_users.count
+
 = link_to(new_recipe_path, class: 'make-btn') do
-  %span.make-btn-text レシピを投稿する
+  %span.make-btn-text レシピ投稿
 
 = render "shared/footer"
