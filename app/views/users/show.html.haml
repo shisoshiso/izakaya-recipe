@@ -1,31 +1,54 @@
 = render "shared/header"
 
 .main
-  .h1 ユーザー詳細ページ
-  .h3
-    ユーザー名#{@user.nickname}
-  .h2 ＜投稿内容一覧＞
-  .contents.row
-    - @recipes.each do |recipe|
-      .content_post{:style => "background-image: url(#{recipe.image});"}
-        %p
-          レシピ名：#{recipe.name}
-        %span.name
-          レシピの説明：#{recipe.explanation}
-        = image_tag recipe.image.variant(resize: '500x500'), class: "item-img" if recipe.image.attached?
-  .h3 フォローユーザー一覧
-  - @followings.each do |user|
-    = link_to "#{user.nickname}", user_path(user.id)
-    = render 'relationships/follow_button', user: user
-    %hr/
-  .h3 フォロワー一覧
-  - @followers.each do |user|
-    = link_to "#{user.nickname}", user_path(user.id)
-    = render 'relationships/follow_button', user: user
-    %hr/
-  .h3 いいねしたレシピ一覧
-  - @favorited.each do |recipe|
-    = recipe.name
-    = image_tag recipe.image.variant(resize: '500x500'), class: "item-img" if recipe.image.attached?
-    = recipe.user.nickname
-  = link_to "ホームへ戻る", root_path
+  .container-fluid
+    %nav{:aria-label => "breadcrumb"}
+      %ol.breadcrumb
+        %li.breadcrumb-item
+          %a{:href=>"#"}
+            Home
+        %li.breadcrumb-item.active{:aria-current => "page"}
+          #{@user.nickname}のレシピルーム
+    .row
+      .col-12
+        = image_tag "izakaya2.jpg" ,class:"img-fluid hero-img"
+        .card-img-overlay.text-white.d-flex.align-items-center.justify-content-center
+          .text-center.p-3{:style=>"background-color:rgba(0,0,0,0.70)"}
+            .h2.pb-2
+              「シンプルなレシピ」で「美味しく」
+              %br/
+            .h4.text-right.pr-5
+              by  #{@user.nickname}
+    
+    .row.my-5
+      .col-sm-9
+        .h3.ml-3.mb-3 #{@user.nickname}が投稿したレシピ
+        .card-group
+          - @recipes.each do |recipe|
+            = link_to recipe_path(recipe.id) do
+              .col-sm-4.mb-3
+                .card.img-hidden.text-center
+                  .card-img-top
+                    = image_tag recipe.image.variant(resize: '500x500'), class: "img-fluid recipe-img" if recipe.image.attached?
+                  .card-body
+                    %p.card-title
+                      = recipe.name
+                    %p.text-muted.recipe-contributor
+                      %span.name
+                        %a{:href => "/users/#{recipe.user.id}"}
+                          = recipe.user.nickname
+                      .star-btn
+                        = image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"
+                        %span.star-count
+                          = recipe.favorited_users.count
+      .col-3.text-center
+        .h3.mb-5 #{@user.nickname}
+        .btn-group.btn-group-lg.mb-5{:role => "group",:aria-label => "Basic example"}
+          %button.btn.btn-secondary.mr-4.rounded-circle{:type=>"button"} T
+          %button.btn.btn-secondary.mr-4.rounded-circle{:type=>"button"} L
+          %button.btn.btn-secondary.mr-4.rounded-circle{:type=>"button"} F
+        .btn-group-vertical{:role => "group",:aria-label => "Basic example"}
+          %button.btn.btn-secondary.mb-4{:type=>"button"} フォロー
+          %button.btn.btn-secondary.mb-4{:type=>"button"} いいね
+
+= render "shared/footer"

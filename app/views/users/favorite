@@ -1,0 +1,15 @@
+  .h3 フォローユーザー一覧
+  - @followings.each do |user|
+    = link_to "#{user.nickname}", user_path(user.id)
+    = render 'relationships/follow_button', user: user
+    %hr/
+  .h3 フォロワー一覧
+  - @followers.each do |user|
+    = link_to "#{user.nickname}", user_path(user.id)
+    = render 'relationships/follow_button', user: user
+    %hr/
+  .h3 いいねしたレシピ一覧
+  - @favorited.each do |recipe|
+    = recipe.name
+    = image_tag recipe.image.variant(resize: '500x500'), class: "item-img" if recipe.image.attached?
+    = recipe.user.nickname
