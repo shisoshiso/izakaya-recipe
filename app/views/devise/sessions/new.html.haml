@@ -8,14 +8,18 @@
       = flash[:alert]
     .form-group
       .form-text-wrap
-        %label.form-text ニックネーム
-        %span.indispensable 必須
+        %label.form-text ニックネーム（必須）
       = f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"例) furima太郎", maxlength:"30"
     .form-group
       .form-text-wrap
-        %label.form-text パスワード
-        %span.indispensable 必須
+        %label.form-text パスワード（必須）
       = f.password_field :password, class:"input-default", id:"password", placeholder:""
     .login-btn
       = f.submit "ログイン" ,class:"login-red-btn"
+    .forget-pass
+      パスワードをお忘れですか？
+    .session-page
+      = link_to 'アカウントをお持ちでないですか？新規作成', new_user_registration_path, class: "sign-up nav-link"
+
+
 = render "shared/second-footer"

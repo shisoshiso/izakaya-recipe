@@ -2,6 +2,28 @@
   height: auto;
 }
 
+.second-fotter-text {
+  color: #333;
+  font-size: 12px;
+  margin: 0 10px;
+}
+
+.second-fotter {
+  width: 100%;
+  min-width: 800px;
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+}
+
+.second-fotter-text-wrap {
+  margin: 30px 0;
+  display: flex;
+  justify-content: center;
+}
+
+
+
 
 
 .login-btn {
@@ -38,11 +60,11 @@
   justify-content: center;
 }
 
-/* form-wrapは商品購入画面でも使用しています */
 .form-wrap {
-  width: 50%;
+  width: 70%;
   background-color: white;
-  padding-bottom: 70px;
+  margin-top: 100px;
+  padding: 0 0 70px 0;
 }
 
 .form-header {
@@ -59,11 +81,11 @@
 }
 
 .form-group {
-  width: 50%;
+  width: 55%;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  padding-top: 20px;
+  padding-top: 40px;
 }
 
 .form-group:first-child {
@@ -78,6 +100,19 @@
 .form-text {
   font-size: 14px;
   font-weight: bold;
+}
+
+.forget-pass{
+  padding-top: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.session-page{
+  padding-top: 25px;
+  text-align: center;
+  font-size: 14px;
+  text-decoration: underline;
 }
 
 .input-default {
@@ -155,7 +190,7 @@
 .form-bottom-text {
   font-size: 15px;
   margin-top: 10px;
-  text-align: center;
+  text-align: left;
 }
 
 .form-bottom-text:last-child {
