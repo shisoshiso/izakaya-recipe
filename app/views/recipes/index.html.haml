@@ -65,8 +65,9 @@
                           = recipe.favorited_users.count
 
 = link_to(new_recipe_path, class: 'make-btn') do
+  %p 新規投稿
   %span.make-btn-text
-    %i.fas.fa-plus.fa-lg
-    %i.fas.fa-utensils.fa-2x
+    %i.fas.fa-plus
+    %i.fas.fa-utensils.fa-lg
 
 = render "shared/footer"
