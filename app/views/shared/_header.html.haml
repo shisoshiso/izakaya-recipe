@@ -2,11 +2,17 @@
   .container-fluid
     .row
       = link_to root_path, class: "navbar-brand mr-5 logo" do
-        Izakaya Recipe
+        %span.material-icons
+          sports_bar
+          居酒屋レシピ
+
       
       = form_with(url: search_recipes_path, local: true, method: :get, class: "input-group col-sm-7 py-sm-4") do |form|
         = form.text_field :keyword, placeholder: "キーワードから探す", class: "form-control"
-        = form.submit "レシピ検索", class: "btn btn-success input-group-append"
+        = button_tag type: 'submit', class: 'btn btn-success input-group-append' do
+          .searchbar_icon
+            %i.fas.fa-search
+        
 
       %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
         %span.navbar-toggler-icon
@@ -44,8 +50,8 @@
               = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout nav-link"
           - else
             %li.nav-item.active.p-2
-              = link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "guest-login nav-link", method: :post
+              = link_to 'ゲストログイン', users_guest_sign_in_path, class: "guest-login nav-link", method: :post
             %li.nav-item.active.p-2
               = link_to 'ログイン', new_user_session_path, class: "login nav-link"
             %li.nav-item.active.p-2
-              = link_to '新規登録', new_user_registration_path, class: "sign-up nav-link"
+              = link_to '無料会員登録', new_user_registration_path, class: "sign-up nav-link"
