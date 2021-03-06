@@ -44,11 +44,21 @@
       .col-3.text-center
         .h3.mb-5 #{@user.nickname}
         .btn-group.btn-group-lg.mb-5{:role => "group",:aria-label => "Basic example"}
-          %button.btn.btn-secondary.mr-4.rounded-circle{:type=>"button"} T
-          %button.btn.btn-secondary.mr-4.rounded-circle{:type=>"button"} L
-          %button.btn.btn-secondary.mr-4.rounded-circle{:type=>"button"} F
+          %button.btn.btn-secondary.mr-4.rounded-circle{:type=>"button"}
+            %i.fab.fa-twitter-square.fa-2x
+          %button.btn.btn-secondary.mr-4.rounded-circle{:type=>"button"}
+            %i.fab.fa-line.fa-2x
+          %button.btn.btn-secondary.mr-4.rounded-circle{:type=>"button"}
+            %span.material-icons
+              facebook
         .btn-group-vertical{:role => "group",:aria-label => "Basic example"}
-          %button.btn.btn-secondary.mb-4{:type=>"button"} フォロー
-          %button.btn.btn-secondary.mb-4{:type=>"button"} いいね
+          %button.btn.btn-secondary.mb-4{:type=>"button"}
+            %span.material-icons
+              person_add_alt
+            %p フォロー一覧
+          %button.btn.btn-secondary.mb-4{:type=>"button"}
+            %span.material-icons
+              favorite_border
+            %p いいね一覧
 
 = render "shared/footer"
