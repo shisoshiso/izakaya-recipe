@@ -4,9 +4,9 @@
   .container-fluid
     %nav{:aria-label => "breadcrumb"}
       %ol.breadcrumb
-        %li.breadcrumb-item
-          %a{:href=>"#"}
-            Home
+        %li.breadcrumb-item.mr-2
+          = link_to root_path do
+            居酒屋レシピ トップ
         %li.breadcrumb-item.active{:aria-current => "page"}
           #{@user.nickname}のレシピルーム
     .row
