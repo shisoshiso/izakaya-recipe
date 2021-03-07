@@ -13,3 +13,7 @@
     = recipe.name
     = image_tag recipe.image.variant(resize: '500x500'), class: "item-img" if recipe.image.attached?
     = recipe.user.nickname
+
+    %h2 いいねしたユーザー
+            - @recipe.favorited_users.each do |user|
+              %li= user.nickname

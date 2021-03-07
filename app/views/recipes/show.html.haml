@@ -1,82 +1,101 @@
 = render "shared/header"
-.item-show
-  .item-box
-    %h2.name
-      = @recipe.name
-    .item-img-content
-      = image_tag @recipe.image ,class:"item-box-img"
-    .item-price-box
-      %span.item-price
-        = @recipe.material
-    - if (user_signed_in?) && (current_user.id == @recipe.user_id)
-      = link_to 'レシピの編集', edit_recipe_path(@recipe.id), method: :get, class: "item-red-btn"
-      %p.or-text or
-      = link_to '削除', recipe_path(@recipe.id), method: :delete, class:'item-destroy'
-    .item-explain-box
-      %span= @recipe.explanation
-    .item-explain-box
-      %span= @recipe.point
-    %table.detail-table
-      %tbody
-        %tr
-          %th.detail-item 投稿者
-          %td.detail-value
-            %a{:href => "/users/#{@recipe.user.id}"}
-              = @recipe.user.nickname
-        %tr
-          %th.detail-item カテゴリー
-          %td.detail-value= @recipe.category.name
-        %tr
-          %th.detail-item ジャンル
-          %td.detail-value= @recipe.genre.name
-        %tr
-          %th.detail-item お酒の種類
-          %td.detail-value= @recipe.alcohol.name
-    .option
-      .favorite-btn
-        = image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"
-        %h2
-          いいね件数#{@recipe.favorites.count}
-        - unless current_user.nil?
-          - if current_user.already_favorited?(@recipe)
-            = button_to 'いいねを取り消す', recipe_favorites_path(@recipe), method: :delete
-          - else
-            = button_to 'いいね', recipe_favorites_path(@recipe)
-        %h2 いいねしたユーザー
-        - @recipe.favorited_users.each do |user|
-          %li= user.nickname
-      .report-btn
-        = image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"
-        %span 不適切なレシピの通報
-  .comment-box
-    - if user_signed_in?
-      = form_with(model: [@recipe, @comment], local: true) do |f|
-        = render 'shared/error_messages', model: f.object
-        = f.text_area :text, class:"comment-text", placeholder: "コメント欄", rows: "2"
-        %p.comment-warn
-          相手のことを考え丁寧なコメントを心がけましょう。
-          %br/
-          不快な言葉遣いなどは利用制限や退会処分となることがあります。
-        = image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"
-        = f.submit "コメントする" ,class:"comment-btn"
-    - else
-      %strong
-        %p ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
-  .comments
-    %h4 ＜コメント一覧＞
-    - @comments.each do |comment|
-      %p
-        %strong
-          = link_to comment.user.nickname, "/users/#{comment.user_id}"
-          ：
-        = comment.text
-  .links
-    %a.change-item-btn{:href => "#"}
-      ＜ 前のレシピ
-    %a.change-item-btn{:href => "#"}
-      後ろのレシピ ＞
-  = link_to 'トップページへ戻る', root_path
-  %a.another-item{:href => "#"}
-    = @recipe.category.name
-    をもっと見る
+
+.show-main
+  .container
+    %nav{:aria-label => "breadcrumb"}
+      %ol.breadcrumb
+        %li.breadcrumb-item.mr-2
+          = link_to root_path do
+            居酒屋レシピ トップ
+        %li.breadcrumb-item.active{:aria-current => "page"}
+          = @recipe.name
+    .row
+      .col-sm-9.mt-3
+        .recipe-name-area.justify-content-between
+          %h2.h2.pb-3
+            = @recipe.name
+          %ul.recipe-score-area
+            %li いいね件数: #{@recipe.favorites.count}
+            - unless current_user.nil?
+              - if current_user.already_favorited?(@recipe)
+                = button_to 'いいねを取り消す', recipe_favorites_path(@recipe), method: :delete
+              - else
+                = button_to 'いいね', recipe_favorites_path(@recipe)
+
+        %ul.renew-area
+          %li.pr-3 投稿日: 2021/2/20
+          %li.pr-3 レシピID: 001
+        %ul.renew-area.pb-3
+          %li.pr-3 お酒の種類: #{@recipe.alcohol.name}
+          %li.pr-3 カテゴリ: #{@recipe.category.name}
+          %li.pr-3 ジャンル: #{@recipe.genre.name}
+        .item-img-content.mb-5
+          = image_tag @recipe.image ,class:"item-box-img"
+        .recipe-explain-box.pb-5.mb-5
+          %p.h4 作り方
+          %span= @recipe.explanation
+        
+        .comment-area
+          .comment-box
+            %h4.mb-3 ＜コメント一覧＞
+            .comments.mb-4
+              - @comments.each do |comment|
+                %p
+                  %strong
+                    = link_to comment.user.nickname, "/users/#{comment.user_id}"
+                    ：
+                  = comment.text
+            - if user_signed_in?
+              = form_with(model: [@recipe, @comment], local: true,class: "text-center") do |f|
+                = render 'shared/error_messages', model: f.object
+                = f.text_area :text, class:"comment-text mb-3", placeholder: "コメント欄", rows: "2"
+                = f.submit "コメントする" ,class:"comment-btn"
+                %p.comment-warn
+                  相手のことを考え丁寧なコメントを心がけましょう。
+                  %br/
+                  不快な言葉遣いなどは利用制限や退会処分となることがあります。
+
+            - else
+              %strong
+                %p ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
+        .edit-destroy-btn.text-center.my-5
+          - if (user_signed_in?) && (current_user.id == @recipe.user_id)
+            = link_to 'レシピの編集', edit_recipe_path(@recipe.id), method: :get, class: "edit-red-btn"
+            %p.h5.my-4 or
+            = link_to '削除', recipe_path(@recipe.id), method: :delete, class:'recipe-destroy'
+        %ul.text-center
+          %li
+            = link_to "「#{@recipe.category.name}」に関するレシピをもっと見る", root_path, method: :get, class: "recipe-link"
+          %li
+            = link_to "「#{@recipe.genre.name}」に関するレシピをもっと見る", root_path, method: :get, class: "recipe-link"
+          %li
+            = link_to "「#{@recipe.alcohol.name}」に関するレシピをもっと見る", root_path, method: :get, class: "recipe-link"
+
+      .col-sm-3
+        .profile.mt-3
+          %p.h5.pb-3 投稿者プロフィール
+          %p 投稿者:
+          %a{:href => "/users/#{@recipe.user.id}"}
+            = @recipe.user.nickname
+          %p.pb-3 シンプルなレシピで美味しく
+
+          -# フォローボタンが表示されないエラー
+          .relation-group.mb-5
+            %span.material-icons
+              person_add_alt
+            -# @followers.each do |user|
+              -#= render 'relationships/follow_button', user: user
+
+          %p.h4 レシピのポイント
+          .recipe-point.mb-5
+            - if @recipe.point.present?
+              %span= @recipe.point
+            - else
+              %p 特にありません。
+
+          %p.h4 材料（１皿分）
+          %span= @recipe.material
+
+
+
 = render "shared/footer"
