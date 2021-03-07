@@ -14,13 +14,21 @@
         .recipe-name-area.justify-content-between
           %h2.h2.pb-3
             = @recipe.name
-          %ul.recipe-score-area
-            %li いいね件数: #{@recipe.favorites.count}
-            - unless current_user.nil?
-              - if current_user.already_favorited?(@recipe)
-                = button_to 'いいねを取り消す', recipe_favorites_path(@recipe), method: :delete
-              - else
-                = button_to 'いいね', recipe_favorites_path(@recipe)
+          .recipe-score-area
+            .favorite-btn
+              - unless current_user.nil?
+                - if current_user.already_favorited?(@recipe)
+                  = link_to recipe_favorites_path(@recipe), method: :delete, class: 'btn favorites-count favorite-red' do
+                    %span.material-icons.mr-1
+                      favorite
+                    %span
+                      = @recipe.favorites.count
+                - else
+                  = link_to recipe_favorites_path(@recipe), method: :post, class: 'btn favorites-count favorite-red' do 
+                    %span.material-icons.mr-1
+                      favorite_border
+                    %span
+                      = @recipe.favorites.count
 
         %ul.renew-area
           %li.pr-3 投稿日: 2021/2/20

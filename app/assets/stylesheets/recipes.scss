@@ -47,6 +47,12 @@
   object-fit: contain;
 }
 
+.recipe-contribute{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .make-btn {
   width: 100px;
   background: black;
@@ -77,11 +83,6 @@
   min-width: 500px;
 }
 
-.items-sell-header {
-  padding: 5vh 0;
-  text-align: center;
-}
-
 .make-main {
   background-color: #FFF;
   width: 70vw;
@@ -93,6 +94,71 @@
   font-size: 22px;
   font-weight: bold;
   text-align: center;
+}
+
+.favorite-btn {
+  border-radius: 40px;
+  width: 10vw;
+  min-width: 100px;
+  border: 2px solid #ffb340;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.favorites-count{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.favorite-red{
+  color: red;
+}
+
+.comment-area{
+  display: flex;
+  justify-content: center;
+}
+
+.comment-box {
+  width: 40vw;
+  background-color: #fff;
+}
+
+.comment-text {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  border: solid 2px #dedede;
+  resize: none;
+}
+
+.comment-warn {
+  padding: 10px;
+  font-size: 14px;
+  margin: 10px 0px;
+  text-align: left;
+}
+
+.comment-btn {
+  line-height: 48px;
+  background-color: #3CCACE;
+  border: 1px solid #3CCACE;
+  color: #fff;
+  width: 50%;
+  min-width: 150px;
+  font-size: 18px;
+  border-radius: 100px;
+  margin-bottom: 2vh;
+  margin: 0 auto;
+}
+
+.recipe-link {
+  display: block;
+  color: black;
+  text-decoration: none;
+  font-size: 20px;
 }
 
 /* 共通 */
@@ -339,10 +405,6 @@
   font-size: 16px;
 }
 
-.edit-destroy-btn{
-
-}
-
 .edit-red-btn {
   background-color: #ea352d;
   font-size: 20px;
@@ -384,65 +446,4 @@
   display: flex;
   justify-content: space-between;
   position: relative;
-}
-
-.favorite-btn {
-  border-radius: 40px;
-  width: 15vw;
-  min-width: 200px;
-  color: rgb(249, 75, 0);
-  border: 2px solid #ffb340;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 20px;
-}
-
-.favorite-star-icon {
-  margin-right: 5px;
-}
-
-.comment-area{
-  display: flex;
-  justify-content: center;
-}
-
-.comment-box {
-  width: 40vw;
-  background-color: #fff;
-}
-
-.comment-text {
-  width: 100%;
-  height: 100px;
-  padding: 10px;
-  border: solid 2px #dedede;
-  resize: none;
-}
-
-.comment-warn {
-  padding: 10px;
-  font-size: 14px;
-  margin: 10px 0px;
-  text-align: left;
-}
-
-.comment-btn {
-  line-height: 48px;
-  background-color: #3CCACE;
-  border: 1px solid #3CCACE;
-  color: #fff;
-  width: 50%;
-  min-width: 150px;
-  font-size: 18px;
-  border-radius: 100px;
-  margin-bottom: 2vh;
-  margin: 0 auto;
-}
-
-.recipe-link {
-  display: block;
-  color: black;
-  text-decoration: none;
-  font-size: 20px;
 }
