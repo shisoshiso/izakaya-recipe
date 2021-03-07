@@ -29,8 +29,8 @@
           %li.pr-3 お酒の種類: #{@recipe.alcohol.name}
           %li.pr-3 カテゴリ: #{@recipe.category.name}
           %li.pr-3 ジャンル: #{@recipe.genre.name}
-        .item-img-content.mb-5
-          = image_tag @recipe.image ,class:"item-box-img"
+        .recipe-img-content.mb-5
+          = image_tag @recipe.image ,class:"recipe-box-img"
         .recipe-explain-box.pb-5.mb-5
           %p.h4 作り方
           %span= @recipe.explanation

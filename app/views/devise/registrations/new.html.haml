@@ -7,16 +7,22 @@
     = render 'shared/error_messages', model: f.object
     .form-group
       .form-text-wrap
-        %label.form-text ニックネーム（必須）
+        %label.form-text 
+          ニックネーム
+          %span.indispensable 必須
       = f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"例) furima太郎", maxlength:"30"
     .form-group
       .form-text-wrap
-        %label.form-text パスワード（必須）
+        %label.form-text
+          パスワード
+          %span.indispensable 必須
       = f.password_field :password, class:"input-default", id:"password", placeholder:"6文字以上の半角英数字"
       %p.info-text ※半角英数字6文字以上で入力してください
     .form-group
       .form-text-wrap
-        %label.form-text 確認用のパスワード（必須）
+        %label.form-text
+          確認用のパスワード
+          %span.indispensable 必須
       = f.password_field :password_confirmation, class:"input-default", id:"password-confirmation", placeholder:"同じパスワードを入力"
     .form-group
       %h2.form-bottom-text
