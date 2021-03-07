@@ -31,16 +31,18 @@
                   .card-img-top
                     = image_tag recipe.image.variant(resize: '500x500'), class: "img-fluid recipe-img" if recipe.image.attached?
                   .card-body
-                    %p.card-title
-                      = recipe.name
-                    %p.text-muted.recipe-contributor
+                    .recipe-contribute
+                      %p.card-title.align-middle
+                        = recipe.name
+                      .favorite-red.favorites-count.mb-2
+                        %span.material-icons.mr-1
+                          favorite
+                        %span
+                          = recipe.favorited_users.count
+                    %p.text-muted
                       %span.name
                         %a{:href => "/users/#{recipe.user.id}"}
                           = recipe.user.nickname
-                      .star-btn
-                        = image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"
-                        %span.star-count
-                          = recipe.favorited_users.count
       .col-3.text-center
         .h3.mb-2 #{@user.nickname}
         %p.mb-5

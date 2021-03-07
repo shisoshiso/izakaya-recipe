@@ -21,7 +21,6 @@
                           favorite
                         %span
                           = recipe.favorited_users.count
-                    
                     %p.text-muted
                       %span.name
                         %a{:href => "/users/#{recipe.user.id}"}
@@ -65,7 +64,6 @@
                           favorite
                         %span
                           = recipe.favorited_users.count
-                    
                     %p.text-muted
                       %span.name
                         %a{:href => "/users/#{recipe.user.id}"}
