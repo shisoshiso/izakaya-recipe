@@ -42,15 +42,16 @@
                         %span.star-count
                           = recipe.favorited_users.count
       .col-3.text-center
-        .h3.mb-5 #{@user.nickname}
+        .h3.mb-2 #{@user.nickname}
+        %p.mb-5
+          #{@user.nickname}をフォローする
         .btn-group.btn-group-lg.mb-5{:role => "group",:aria-label => "Basic example"}
-          %button.btn.btn-secondary.mr-4.rounded-circle{:type=>"button"}
-            %i.fab.fa-twitter-square.fa-2x
-          %button.btn.btn-secondary.mr-4.rounded-circle{:type=>"button"}
-            %i.fab.fa-line.fa-2x
-          %button.btn.btn-secondary.mr-4.rounded-circle{:type=>"button"}
-            %span.material-icons
-              facebook
+          %button.btn.mr-1.rounded-circle{:type=>"button"}
+            %i.fab.fa-twitter-square.fa-2x.icon-twitter
+          %button.btn.mr-1.rounded-circle{:type=>"button"}
+            %i.fab.fa-line.fa-2x.icon-line
+          %button.btn.rounded-circle{:type=>"button"}
+            %i.fab.fa-facebook.fa-2x.icon-facebook
         .btn-group-vertical{:role => "group",:aria-label => "Basic example"}
           %button.btn.btn-secondary.mb-4{:type=>"button"}
             %span.material-icons
