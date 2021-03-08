@@ -22,7 +22,7 @@
     
     .row.my-5
       .col-sm-9
-        .h3.ml-3.mb-3 #{@user.nickname}が投稿したレシピ
+        .h3.ml-3.mb-3 #{@user.nickname}が投稿したレシピ： #{@all_recipes.length} 件
         .card-group
           - @recipes.each do |recipe|
             = link_to recipe_path(recipe.id) do
@@ -43,6 +43,7 @@
                       %span.name
                         %a{:href => "/users/#{recipe.user.id}"}
                           = recipe.user.nickname
+        = paginate @recipes
       .col-3.text-center
         .h3.mb-2.text-left #{@user.nickname}
         .follower-count.text-left.mb-2
