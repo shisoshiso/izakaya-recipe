@@ -44,7 +44,8 @@ class RecipesController < ApplicationController
   end
 
   def search
-    @recipes = Recipe.search(params[:keyword])
+    @all_recipes = Recipe.search(params[:keyword])
+    @recipes = Recipe.search(params[:keyword]).page(params[:page]).per(12)
   end
 
   private

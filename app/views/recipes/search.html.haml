@@ -9,7 +9,7 @@
             居酒屋レシピ トップ
         %li.breadcrumb-item.active{:aria-current => "page"}
           「検索内容」の検索結果
-    %p.h3.mb-3.ml-5 「検索内容」の検索結果： #{@recipes.length} 件
+    %p.h3.mb-3.ml-5 「検索内容」の検索結果： #{@all_recipes.length} 件
 
     .row
       .col-sm-9.ml-5
@@ -35,5 +35,6 @@
                           = recipe.user.nickname
           - unless @recipes.exists?
             %p.mt-5.ml-5 お探しのキーワードでレシピが見つかりませんでした。
+        = paginate @recipes
 
 = render "shared/footer"
