@@ -124,6 +124,9 @@ GEM
     ffi (1.14.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    gretel (4.2.0)
+      actionview (>= 5.1, < 7.0)
+      railties (>= 5.1, < 7.0)
     haml (5.2.1)
       temple (>= 0.8.0)
       tilt
@@ -359,6 +362,7 @@ DEPENDENCIES
   devise-i18n-views
   factory_bot_rails
   faker
+  gretel
   haml-rails
   high_voltage
   image_processing (~> 1.2)
