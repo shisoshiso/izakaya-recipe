@@ -50,26 +50,26 @@
     .row
       .col-sm-9
         .card-group
-          - @recipes.each do |recipe|
-            = link_to recipe_path(recipe.id) do
+          - @favorited_recipes.each do |favorited_recipe|
+            = link_to recipe_path(favorited_recipe.id) do
               .col-sm-4.mb-3
                 .card.img-hidden.text-center
                   .card-img-top
-                    = image_tag recipe.image.variant(resize: '500x500'), class: "img-fluid recipe-img" if recipe.image.attached?
+                    = image_tag favorited_recipe.image.variant(resize: '500x500'), class: "img-fluid recipe-img" if favorited_recipe.image.attached?
                   .card-body
                     .recipe-contribute
                       %p.card-title.align-middle
-                        = recipe.name
+                        = favorited_recipe.name
                       .favorite-red.favorites-count.mb-2
                         %span.material-icons.mr-1
                           favorite
                         %span
-                          = recipe.favorited_users.count
+                          = favorited_recipe.favorited_users.count
                     %p.text-muted
                       %span.name
-                        %a{:href => "/users/#{recipe.user.id}"}
-                          = recipe.user.nickname
-        = paginate @recipes
+                        %a{:href => "/users/#{favorited_recipe.user.id}"}
+                          = favorited_recipe.user.nickname
+        = paginate @favorited_recipes
 
 = link_to(new_recipe_path, class: 'make-btn') do
   %span.make-btn-text
