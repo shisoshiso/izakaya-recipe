@@ -37,5 +37,8 @@
     .session-page
       = link_to 'すでにアカウントをお持ちですか？ログイン', new_user_session_path, class: "login nav-link"
 
+    %p.text-center.mt-4
+      = link_to 'ゲストログイン', users_guest_sign_in_path, class: "btn btn-secondary guest-login", method: :post
+
       
 = render "shared/second-footer"

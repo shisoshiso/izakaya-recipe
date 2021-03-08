@@ -6,7 +6,6 @@
           sports_bar
         %p
           居酒屋レシピ
-
       
       = form_with(url: search_recipes_path, local: true, method: :get, class: "input-group col-sm-7 py-sm-4") do |form|
         = form.text_field :keyword, placeholder: "キーワードから探す", class: "form-control"
