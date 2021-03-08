@@ -4,7 +4,7 @@
       = link_to root_path, class: "navbar-brand mr-5 logo" do
         %span.material-icons.pr-2
           sports_bar
-        %p
+        %p.font-weight-bold
           居酒屋レシピ
       
       = form_with(url: search_recipes_path, local: true, method: :get, class: "input-group col-sm-7 py-sm-4") do |form|
@@ -19,10 +19,6 @@
         %ul.navbar-nav
           %li.nav-item.active.p-2
             %a.nav-link{:href => "#"}
-              ランキング
-              %span.sr-only (current)
-          %li.nav-item.active.p-2
-            %a.nav-link{:href => "#"}
               お酒別
               %span.sr-only (current)
           %li.nav-item.active.p-2
@@ -33,9 +29,6 @@
             %a.nav-link{:href => "#"}
               ジャンル
               %span.sr-only (current)
-          %li.nav-item.active.p-2
-            %a.nav-link{:href => "#"}
-              投稿者検索
           %li.nav-item.active.p-2
             = link_to '居酒屋レシピとは', page_path('about'), class: "nav-link"
             %span.sr-only (current)

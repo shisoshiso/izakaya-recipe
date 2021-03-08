@@ -2,7 +2,9 @@
 
 .main
   .container-fluid
-    %p.h3.mb-3.ml-3 新着レシピ
+    %p.h3.mb-3.ml-3 
+      %i.fab.fa-hotjar.font-weight-bold
+        新着レシピ
     .row
       .col-sm-9
         .card-group
@@ -28,7 +30,9 @@
         = paginate @recipes
 
       .col-sm-3
-        %p.h3 トピックス
+        %p.h3
+          %i.fas.fa-rss-square
+            トピックス
         %br/
         %p
           2021/2/27（土）
@@ -46,7 +50,9 @@
           サービスを開始しました！
 
   .container-fluid.mt-5
-    %p.h3.mb-3.ml-3 人気レシピ
+    %p.h3.mb-3.ml-3
+      %i.fas.fa-crown
+        人気レシピ
     .row
       .col-sm-9
         .card-group
