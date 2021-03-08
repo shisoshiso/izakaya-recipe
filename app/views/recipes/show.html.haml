@@ -5,10 +5,8 @@
     %nav{:aria-label => "breadcrumb"}
       %ol.breadcrumb
         %li.breadcrumb-item.mr-2
-          = link_to root_path do
-            居酒屋レシピ トップ
-        %li.breadcrumb-item.active{:aria-current => "page"}
-          = @recipe.name
+          - breadcrumb :recipe_show
+          = render "shared/breadcrumbs"
     .row
       .col-sm-9.mt-3
         .recipe-name-area.justify-content-between

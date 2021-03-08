@@ -1,6 +1,12 @@
 = render "shared/header"
 
 .show-main
+  .container.pt-4
+    %nav{:aria-label => "breadcrumb"}
+      %ol.breadcrumb
+        %li.breadcrumb-item.mr-2
+          - breadcrumb :recipe_new
+          = render "shared/breadcrumbs"
   .make-contents
     .make-main
       %h2.make-title.mb-5 レシピの情報を入力
