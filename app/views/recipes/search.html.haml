@@ -1,40 +1,38 @@
 = render "shared/header"
 
 .search-main
-  .container-fluid.max-height
+  .container
     %nav{:aria-label => "breadcrumb"}
-      %ol.breadcrumb.pl-5
+      %ol.breadcrumb
         %li.breadcrumb-item.mr-2
-          = link_to root_path do
-            居酒屋レシピ トップ
-        %li.breadcrumb-item.active{:aria-current => "page"}
-          「検索内容」の検索結果
-    %p.h3.mb-3.ml-5 「検索内容」の検索結果： #{@all_recipes.length} 件
+          - breadcrumb :recipe_search
+          = render "shared/breadcrumbs"
+    %p.h3.mb-4 「#{params["keyword"]}」の検索結果： #{@all_recipes.length} 件
 
+  .container
     .row
-      .col-sm-9.ml-5
-        .card-group
-          - @recipes.each do |recipe|
-            = link_to recipe_path(recipe.id) do
-              .col-sm-4.mb-3
-                .card.img-hidden.text-center
-                  .card-img-top
-                    = image_tag recipe.image.variant(resize: '500x500'), class: "img-fluid recipe-img" if recipe.image.attached?
-                  .card-body
-                    .recipe-contribute
-                      %p.card-title.align-middle
-                        = recipe.name
-                      .favorite-red.favorites-count.mb-2
-                        %span.material-icons.mr-1
-                          favorite
-                        %span
-                          = recipe.favorited_users.count
-                    %p.text-muted
-                      %span.name
-                        %a{:href => "/users/#{recipe.user.id}"}
-                          = recipe.user.nickname
-          - unless @recipes.exists?
-            %p.mt-5.ml-5 お探しのキーワードでレシピが見つかりませんでした。
-        = paginate @recipes
+      .card-group
+        - @recipes.each do |recipe|
+          = link_to recipe_path(recipe.id) do
+            .col-sm-4.mb-3
+              .card.img-hidden.text-center
+                .card-img-top
+                  = image_tag recipe.image.variant(resize: '500x500'), class: "img-fluid recipe-img" if recipe.image.attached?
+                .card-body
+                  .recipe-contribute
+                    %p.card-title.align-middle
+                      = recipe.name
+                    .favorite-red.favorites-count.mb-2
+                      %span.material-icons.mr-1
+                        favorite
+                      %span
+                        = recipe.favorited_users.count
+                  %p.text-muted
+                    %span.name
+                      %a{:href => "/users/#{recipe.user.id}"}
+                        = recipe.user.nickname
+        - unless @recipes.exists?
+          %p.mt-5.ml-5 お探しのキーワードでレシピが見つかりませんでした。
+      = paginate @recipes
 
 = render "shared/footer"
