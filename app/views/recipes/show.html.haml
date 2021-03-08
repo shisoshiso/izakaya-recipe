@@ -80,19 +80,11 @@
             = link_to "「#{@recipe.alcohol.name}」に関するレシピをもっと見る", root_path, method: :get, class: "recipe-link"
 
       .col-sm-3
-        .profile.mt-3
-          %p.h5.pb-3 投稿者プロフィール
-          %p 投稿者:
-          %a{:href => "/users/#{@recipe.user.id}"}
-            = @recipe.user.nickname
-          %p.pb-3 シンプルなレシピで美味しく
-
-          -# フォローボタンが表示されないエラー
-          .relation-group.mb-5
-            %span.material-icons
-              person_add_alt
-            -# @followers.each do |user|
-              -#= render 'relationships/follow_button', user: user
+        .profile.mt-5
+          .profile-contributer
+            %p.mr-2 投稿者：
+            %a.mb-5{:href => "/users/#{@recipe.user.id}"}
+              = @recipe.user.nickname
 
           %p.h4 レシピのポイント
           .recipe-point.mb-5

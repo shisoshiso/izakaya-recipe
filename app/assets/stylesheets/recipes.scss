@@ -116,6 +116,30 @@
   color: red;
 }
 
+.profile-contributer{
+  display: flex;
+}
+
+.follow-btn {
+  border-radius: 40px;
+  width: 20vw;
+  min-width: 200px;
+  border: 2px solid #3744b9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.follow-count{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.follow-red{
+  color: rgb(49, 80, 255);
+}
+
 .comment-area{
   display: flex;
   justify-content: center;

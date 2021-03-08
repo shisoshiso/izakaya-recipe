@@ -44,9 +44,20 @@
                         %a{:href => "/users/#{recipe.user.id}"}
                           = recipe.user.nickname
       .col-3.text-center
-        .h3.mb-2 #{@user.nickname}
-        %p.mb-5
-          #{@user.nickname}をフォローする
+        .h3.mb-2.text-left #{@user.nickname}
+        .follower-count.text-left.mb-2
+          %p.mb-2
+            followings：
+            = @followings.count
+          %p.mb-2
+            followers：
+            = @followers.count
+
+        - unless current_user.id == @user.id
+          .follow-btn.mb-5
+            - @followers.each do |user|
+              = render 'relationships/follow_button', user: user
+
         .btn-group.btn-group-lg.mb-5{:role => "group",:aria-label => "Basic example"}
           %button.btn.mr-1.rounded-circle{:type=>"button"}
             %i.fab.fa-twitter-square.fa-2x.icon-twitter
