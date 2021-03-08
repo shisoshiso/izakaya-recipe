@@ -1,14 +1,12 @@
 = render "shared/header"
 
 .main
-  .container-fluid.pb-5
+  .container.pb-5
     %nav{:aria-label => "breadcrumb"}
       %ol.breadcrumb
         %li.breadcrumb-item.mr-2
-          = link_to root_path do
-            居酒屋レシピ トップ
-        %li.breadcrumb-item.active{:aria-current => "page"}
-          居酒屋レシピとは
+          - breadcrumb :about
+          = render "shared/breadcrumbs"
     .row
       .col-12
         = image_tag "izakaya1.jpg" ,class:"img-fluid hero-img"

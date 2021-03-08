@@ -5,6 +5,8 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all.order('created_at DESC').page(params[:page]).per(6)
+    favorited_recipes = Recipe.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
+    @favorited_recipes = Kaminari.paginate_array(favorited_recipes).page(params[:page]).per(6)
   end
 
   def show

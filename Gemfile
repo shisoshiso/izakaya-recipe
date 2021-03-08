@@ -80,3 +80,5 @@ gem 'rails-i18n'
 gem 'high_voltage'
 
 gem 'kaminari'
+
+gem "gretel"
