@@ -1,0 +1,48 @@
+= render "shared/header"
+
+.main
+  .container-fluid.pb-5
+    %nav{:aria-label => "breadcrumb"}
+      %ol.breadcrumb
+        %li.breadcrumb-item.mr-2
+          = link_to root_path do
+            居酒屋レシピ トップ
+        %li.breadcrumb-item.active{:aria-current => "page"}
+          居酒屋レシピとは
+    .row
+      .col-12
+        = image_tag "izakaya1.jpg" ,class:"img-fluid hero-img"
+        .card-img-overlay.text-white.d-flex.align-items-center.justify-content-center
+          .text-center.p-3{:style=>"background-color:rgba(0,0,0,0.70)"}
+            .h2.text-left.pb-3
+              居酒屋レシピとは？
+              %br/
+            .h4.text-left
+              レシピサイト「居酒屋レシピ」は、居酒屋のメニューに
+              %br/
+              特化したレシピが集まる料理メディアです。
+
+  .container.marketing.pt-5.my-5
+    .marketing-title.pb-5.mb-5
+      %p.h2.text-center.font-weight-bold
+        居酒屋レシピの一般会員登録は無料！お気に入り保存は無制限
+
+    .row
+      .col-lg-4.text-center
+        %i.fas.fa-hand-holding-heart.fa-3x.mb-4
+        %p.marketing-subtitle.font-weight-bold.pb-4
+          お気に入り登録
+        %p.fs-14 好きなレシピをお気に入り保存することができます。好きなレシピをいつでも簡単に見返すことができます。レシピへコメントすることも可能です。
+      .col-lg-4.text-center
+        %i.fas.fa-user-plus.fa-3x.mb-4
+        %p.marketing-subtitle.font-weight-bold.pb-4
+          フォロー機能
+        %p.fs-14 気に入ったレシピ投稿者をフォローすることができます。
+      .col-lg-4.text-center
+        %i.fas.fa-cogs.fa-3x.mb-4
+        %p.marketing-subtitle.font-weight-bold.pb-4
+          直感的な操作性
+        %p.fs-14 「使いやすさ」を重視した、直感的な操作ができるレイアウトにしました。ログインの際にEメールの登録も不要です。
+    
+
+= render "shared/footer"
