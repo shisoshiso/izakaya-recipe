@@ -1,9 +1,9 @@
 %footer.second-fotter
   .second-fotter-text-wrap
-    %p.second-fotter-text プライバシー
-    %p.second-fotter-text 利用規約
-    %p.second-fotter-text ヘルプ
-    %p.second-fotter-text IzakayaRecipe
+    = link_to '居酒屋レシピとは', page_path('about'), class: "second-fotter-text"
+    = link_to 'プライバシー', '#', class: "second-fotter-text"
+    = link_to '利用規約', '#', class: "second-fotter-text"
+    = link_to 'ヘルプ', '#', class: "second-fotter-text"
 
 %footer.navbar-expand-lg.bg-dark.text-center.text-white
   .text-center.p-3{:style => "background-color: rgba(0, 0, 0, 0.2);"}
