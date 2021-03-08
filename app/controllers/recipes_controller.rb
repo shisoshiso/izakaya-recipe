@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
   before_action :move_to_index, only: [:edit]
 
   def index
-    @recipes = Recipe.all.order('created_at DESC')
+    @recipes = Recipe.all.order('created_at DESC').page(params[:page]).per(6)
   end
 
   def show
