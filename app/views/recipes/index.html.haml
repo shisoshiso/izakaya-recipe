@@ -69,6 +69,7 @@
                       %span.name
                         %a{:href => "/users/#{recipe.user.id}"}
                           = recipe.user.nickname
+        = paginate @recipes
 
 = link_to(new_recipe_path, class: 'make-btn') do
   %span.make-btn-text
