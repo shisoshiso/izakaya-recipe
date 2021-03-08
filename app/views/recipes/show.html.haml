@@ -57,12 +57,12 @@
               = form_with(model: [@recipe, @comment], local: true,class: "text-center") do |f|
                 = render 'shared/error_messages', model: f.object
                 = f.text_area :text, class:"comment-text mb-3", placeholder: "コメント欄", rows: "2"
+                -# %i.far.fa-comments
                 = f.submit "コメントする" ,class:"comment-btn"
                 %p.comment-warn
                   相手のことを考え丁寧なコメントを心がけましょう。
                   %br/
                   不快な言葉遣いなどは利用制限や退会処分となることがあります。
-
             - else
               %strong
                 %p ※※※ コメントの投稿には新規登録/ログインが必要です ※※※

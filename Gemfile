@@ -76,3 +76,5 @@ gem 'devise-i18n-views'
 gem "aws-sdk-s3", require: false
 
 gem 'rails-i18n'
+
+gem 'high_voltage'
