@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
-      redirect_to recipe_path(@comment.prototype)
+      redirect_to recipe_path(@comment.recipe)
     else
       @recipe = @comment.recipe
       @comments = @recipe.comments

@@ -1,11 +1,39 @@
 = render "shared/header"
 
-.contents.row.main
-  - @recipes.each do |recipe|
-    .content_post
-      = image_tag recipe.image.variant(resize: '500x500'), class: "item-img" if recipe.image.attached?
-      %p= recipe.name
-      %span.name
-        %a{:href => "/users/#{recipe.user.id}"}
-          %span レシピ投稿者
-          = recipe.user.nickname
+.search-main
+  .container-fluid.max-height
+    %nav{:aria-label => "breadcrumb"}
+      %ol.breadcrumb.pl-5
+        %li.breadcrumb-item.mr-2
+          = link_to root_path do
+            居酒屋レシピ トップ
+        %li.breadcrumb-item.active{:aria-current => "page"}
+          「検索内容」の検索結果
+    %p.h3.mb-3.ml-5 「検索内容」の検索結果： #{@recipes.length} 件
+
+    .row
+      .col-sm-9.ml-5
+        .card-group
+          - @recipes.each do |recipe|
+            = link_to recipe_path(recipe.id) do
+              .col-sm-4.mb-3
+                .card.img-hidden.text-center
+                  .card-img-top
+                    = image_tag recipe.image.variant(resize: '500x500'), class: "img-fluid recipe-img" if recipe.image.attached?
+                  .card-body
+                    .recipe-contribute
+                      %p.card-title.align-middle
+                        = recipe.name
+                      .favorite-red.favorites-count.mb-2
+                        %span.material-icons.mr-1
+                          favorite
+                        %span
+                          = recipe.favorited_users.count
+                    %p.text-muted
+                      %span.name
+                        %a{:href => "/users/#{recipe.user.id}"}
+                          = recipe.user.nickname
+          - unless @recipes.exists?
+            %p.mt-5.ml-5 お探しのキーワードでレシピが見つかりませんでした。
+
+= render "shared/footer"

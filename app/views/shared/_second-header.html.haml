@@ -1,4 +1,8 @@
-%body
-  %header.second-header
-    = link_to root_path, class: "apple-btn" do
-      Izakaya Recipe
+%nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
+  .container-fluid
+    .row
+      = link_to root_path, class: "navbar-brand mr-5 logo" do
+        %span.material-icons.pr-2
+          sports_bar
+        %p
+          居酒屋レシピ
