@@ -1,7 +1,8 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[show edit update]
-  before_action :authenticate_user!, except: [:index, :show, :search, :new_guest]
+  before_action :authenticate_user!, except: [:index, :show, :search, :new_guest, :category]
   before_action :move_to_index, only: [:edit]
+  before_action :search_category_recipe, only: [:index, :category, :show]
 
   def index
     @recipes = Recipe.all.order('created_at DESC').page(params[:page]).per(6)
@@ -50,6 +51,12 @@ class RecipesController < ApplicationController
     @recipes = Recipe.search(params[:keyword]).page(params[:page]).per(12)
   end
 
+  def category
+    @recipes = @p.result
+    category_id = params[:q][:category_id_eq]
+    @category = Category.find_by(id: category_id)
+  end
+  
   private
 
   def set_recipe
@@ -63,5 +70,9 @@ class RecipesController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(:name, :material, :alcohol_id, :category_id, :genre_id, :explanation, :point, :user_id,
                                    :image).merge(user_id: current_user.id)
+  end
+
+  def search_category_recipe
+    @p = Recipe.ransack(params[:q]) 
   end
 end

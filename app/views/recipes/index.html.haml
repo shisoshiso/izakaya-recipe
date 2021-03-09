@@ -31,23 +31,30 @@
 
       .col-sm-3
         %p.h3
-          %i.fas.fa-rss-square
-            トピックス
-        %br/
-        %p
-          2021/2/27（土）
-          %br>/
-          トップページを更新しました！
-        %br/
-        %p
-          2021/2/20（土）
-          %br>/
-          一部機能を追加しました！
-        %br/
-        %p
-          2021/2/14（土）
-          %br>/
-          サービスを開始しました！
+          %i.fas.fa-search-plus
+            詳細検索
+          .search-box.mb-5
+            = search_form_for @p, url: recipe_category_path do |f|
+              = f.collection_select :category_id_eq, Category.where.not(id: 0), :id, :name
+              = f.submit 'カテゴリ検索'
+        
+        .rss
+          %p.h3
+            %i.fas.fa-rss-square
+              トピックス
+          .news-box.pl-2
+            %p.pb-2
+              2021/2/27（土）
+              %br>/
+              トップページを更新しました！
+            %p.pb-2
+              2021/2/20（土）
+              %br>/
+              一部機能を追加しました！
+            %p.pb-2
+              2021/2/14（土）
+              %br>/
+              サービスを開始しました！
 
   .container-fluid.mt-5
     %p.h3.mb-3.ml-3
