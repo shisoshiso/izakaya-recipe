@@ -18,18 +18,6 @@
       #navbarSupportedContent.collapse.navbar-collapse.d-flex.justify-content-around
         %ul.navbar-nav
           %li.nav-item.active.p-2
-            %a.nav-link{:href => "#"}
-              お酒別
-              %span.sr-only (current)
-          %li.nav-item.active.p-2
-            %a.nav-link{:href => "#"}
-              カテゴリ
-              %span.sr-only (current)
-          %li.nav-item.active.p-2
-            %a.nav-link{:href => "#"}
-              ジャンル
-              %span.sr-only (current)
-          %li.nav-item.active.p-2
             = link_to '居酒屋レシピとは', page_path('about'), class: "nav-link"
             %span.sr-only (current)
           - if user_signed_in?
