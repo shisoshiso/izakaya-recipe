@@ -12,6 +12,11 @@ crumb :recipe_search do
   parent :root
 end
 
+crumb :search_recipe do
+  link "詳細検索結果",  recipes_searchrecipe_path
+parent :root
+end
+
 crumb :about do
   link "居酒屋レシピとは", page_path('about')
   parent :root
