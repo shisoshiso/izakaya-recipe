@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :users, only: :show
   resources :relationships, only: [:create, :destroy]
 
-  get '/recipe/category', to: "recipes#category"
+  get '/recipes/searchrecipe', to: "recipes#search_recipe"
   resources :recipes do
     resources :comments, only: :create
     resource :favorites, only: [:create, :destroy]

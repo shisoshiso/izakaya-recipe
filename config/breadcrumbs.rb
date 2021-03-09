@@ -12,10 +12,8 @@ crumb :recipe_search do
   parent :root
 end
 
-crumb :category_search do
-  category_id = params[:q][:category_id_eq]
-  @category = Category.find_by(id: category_id)
-  link "「#{@category.name}」のレシピ検索結果", recipe_category_path
+crumb :search_recipe do
+  link "詳細検索結果",  recipes_searchrecipe_path
 parent :root
 end
 
