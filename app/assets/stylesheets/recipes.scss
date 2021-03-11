@@ -43,8 +43,19 @@
 .recipe-box-img {
   height: 40vh;
   width: 50vw;
+  min-height: 300px;
+  object-fit: contain;
+  border: 1px solid #ccc;
+  background: #eee;
+}
+
+.recipe-new-img {
+  height: 40vh;
+  width: 50vw;
   min-height: 400px;
   object-fit: contain;
+  border: 1px solid #ccc;
+  background: #eee;
 }
 
 .recipe-contribute{
