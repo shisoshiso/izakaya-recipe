@@ -17,7 +17,7 @@
             .col-sm-4.mb-3
               .card.img-hidden.text-center
                 .card-img-top
-                  = image_tag recipe.image.variant(resize: '500x500'), class: "img-fluid recipe-img" if recipe.image.attached?
+                  = image_tag recipe.image.variant(resize: '500x500'), class: "img-fluid recipe-box-img" if recipe.image.attached?
                 .card-body
                   .recipe-contribute
                     %p.card-title.align-middle
