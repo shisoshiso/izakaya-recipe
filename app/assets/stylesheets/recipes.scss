@@ -40,6 +40,12 @@
   display: flex;
 }
 
+.recipe_search{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .recipe-box-img {
   height: 40vh;
   width: 50vw;
