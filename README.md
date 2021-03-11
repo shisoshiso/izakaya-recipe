@@ -54,7 +54,7 @@
 </ul>
 
 ## 洗い出した要件(使用したgem名)
-- 検索機能(ransack)
+- 詳細検索機能(ransack)
 - 投稿機能(Activehash)
 - 一覧表示機能
 - ページネーション機能(kaminari)
@@ -72,6 +72,30 @@
 - 静的ページ作成(high_voltage)
 
 ## 実装した機能についてのGIFと説明
+- 簡単ログイン機能
+ユーザー登録せずに、ゲストとして本アプリを簡単に使用できます。
+例）未ログイン状態では、ユーザー詳細ページへ遷移できずにログイン画面へ遷移します。ゲストログインを選択することで、ユーザー詳細画面へ遷移することができます。
+![izakayarecipe1](https://i.gyazo.com/53e765f26d30016796c024a14c8f06ff.gif)
+
+- 新規レシピ投稿機能
+ログインしたユーザーは新規投稿することができます。
+![izakayarecipe2](https://i.gyazo.com/2b1e2bb091daff57d8ad8b563c2058d1.gif)
+
+- いいね機能
+気に入ったレシピにいいねすることができます。
+![izakayarecipe3](https://i.gyazo.com/fbc46fb1e5367fed5db24cffff812b0c.gif)
+
+- いいね順並べ替え機能
+いいね順に並んでいるので、人気レシピがわかります。
+![izakayarecipe4](https://i.gyazo.com/eb2e43d4c192d0d41938b0c1805869da.gif)
+
+- 詳細検索機能
+カテゴリ別に検索することができます。
+![izakayarecipe5](https://i.gyazo.com/7a3cf5738e97bac39b457b26210076dd.gif)
+
+- エラーメッセージ日本語化機能
+新規投稿画面およびログイン画面でのエラーメッセージを日本語で表示します。
+![izakayarecipe6](https://i.gyazo.com/e8d9eee0a0eafaa9c649233bc76bd388.gif)
 
 
 ## 実装予定の機能
@@ -79,7 +103,7 @@
 - いいね、コメント機能のAjax化
 - SNS認証用API
 - CircleCIの導入
-- 材料DBの再設計
+- 材料・手順DBの再設計
 - コメントに画像添付（つくれぽ）
 
 ## データベース設計
