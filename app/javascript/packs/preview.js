@@ -9,7 +9,7 @@ if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
       // 表示する画像を生成
       const blobImage = document.createElement('img');
       blobImage.setAttribute('src', blob);
-      blobImage.className = 'recipe-box-img';
+      blobImage.className = 'recipe-new-img';
       document.body.appendChild(blobImage);
 
       // 生成したHTMLの要素をブラウザに表示させる

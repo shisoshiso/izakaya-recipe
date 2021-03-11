@@ -5,11 +5,11 @@
 }
 
 .main{
-  padding-top: 200px;
+  padding-top: 130px;
 }
 
 .search-main{
-  padding-top: 180px;
+  padding-top: 130px;
 }
 
 .max-height{
@@ -21,7 +21,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 180px;
+  padding-top: 130px;
 }
 
 .recipe-name-area{
@@ -40,11 +40,28 @@
   display: flex;
 }
 
+.recipe_search{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .recipe-box-img {
+  height: 40vh;
+  width: 50vw;
+  min-height: 300px;
+  object-fit: contain;
+  border: 1px solid #ccc;
+  background: #eee;
+}
+
+.recipe-new-img {
   height: 40vh;
   width: 50vw;
   min-height: 400px;
   object-fit: contain;
+  border: 1px solid #ccc;
+  background: #eee;
 }
 
 .recipe-contribute{

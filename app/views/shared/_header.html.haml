@@ -1,34 +1,29 @@
 %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
   .container-fluid
-    .row
-      = link_to root_path, class: "navbar-brand mr-5 logo" do
-        %span.material-icons.pr-2
-          sports_bar
-        %p.font-weight-bold
-          居酒屋レシピ
-      
-      = form_with(url: search_recipes_path, local: true, method: :get, class: "input-group col-sm-7 py-sm-4") do |form|
-        = form.text_field :keyword, placeholder: "キーワードから探す", class: "form-control"
-        = button_tag type: 'submit', class: 'btn btn-success input-group-append' do
-          .searchbar_icon
-            %i.fas.fa-search
-
-      %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
-        %span.navbar-toggler-icon
-      #navbarSupportedContent.collapse.navbar-collapse.d-flex.justify-content-around
-        %ul.navbar-nav
-          %li.nav-item.active.p-2
-            = link_to '居酒屋レシピとは', page_path('about'), class: "nav-link"
-            %span.sr-only (current)
-          - if user_signed_in?
-            %li.nav-item.active.p-2
-              = link_to current_user.nickname, "/users/#{current_user.id}", class: "user-nickname nav-link"
-            %li.nav-item.active.p-2
-              = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout nav-link"
-          - else
-            %li.nav-item.active.p-2
-              = link_to 'ゲストログイン', users_guest_sign_in_path, class: "guest-login nav-link", method: :post
-            %li.nav-item.active.p-2
-              = link_to 'ログイン', new_user_session_path, class: "login nav-link"
-            %li.nav-item.active.p-2
-              = link_to '無料会員登録', new_user_registration_path, class: "sign-up nav-link"
+    = link_to root_path, class: "navbar-brand mr-5 logo" do
+      %span.material-icons.pr-2
+        sports_bar
+      %p.font-weight-bold
+        居酒屋レシピ
+    
+    = form_with(url: search_recipes_path, local: true, method: :get, class: "input-group col-sm-4 py-sm-4") do |form|
+      = form.text_field :keyword, placeholder: "キーワードから探す", class: "form-control"
+      = button_tag type: 'submit', class: 'btn btn-success input-group-append' do
+        .searchbar_icon
+          %i.fas.fa-search
+    %ul.navbar-nav
+      %li.nav-item.active.p-2
+        = link_to '居酒屋レシピとは', page_path('about'), class: "nav-link"
+        %span.sr-only (current)
+      - if user_signed_in?
+        %li.nav-item.active.p-2
+          = link_to current_user.nickname, "/users/#{current_user.id}", class: "user-nickname nav-link"
+        %li.nav-item.active.p-2
+          = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout nav-link"
+      - else
+        %li.nav-item.active.p-2
+          = link_to 'ゲストログイン', users_guest_sign_in_path, class: "guest-login nav-link", method: :post
+        %li.nav-item.active.p-2
+          = link_to 'ログイン', new_user_session_path, class: "login nav-link"
+        %li.nav-item.active.p-2
+          = link_to '無料会員登録', new_user_registration_path, class: "sign-up nav-link"
