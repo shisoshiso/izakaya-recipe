@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     else
       @recipe = @comment.recipe
       @comments = @recipe.comments
-      render "recipes/show"
+      render 'recipes/show'
     end
   end
 
