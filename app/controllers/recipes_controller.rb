@@ -6,7 +6,9 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all.order('created_at DESC').page(params[:page]).per(6)
-    favorited_recipes = Recipe.all.order('created_at DESC').includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
+    favorited_recipes = Recipe.all.order('created_at DESC').includes(:favorited_users).sort do |a, b|
+      b.favorited_users.size <=> a.favorited_users.size
+    end
     @favorited_recipes = Kaminari.paginate_array(favorited_recipes).page(params[:page]).per(6)
   end
 
@@ -54,7 +56,7 @@ class RecipesController < ApplicationController
   def search_recipe
     @results = @p.result
   end
-  
+
   private
 
   def set_recipe
@@ -71,6 +73,6 @@ class RecipesController < ApplicationController
   end
 
   def create_searching_object
-    @p = Recipe.ransack(params[:q]) 
+    @p = Recipe.ransack(params[:q])
   end
 end

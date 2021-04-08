@@ -19,8 +19,8 @@
     - Ruby on Rails 6.0.3
 - インフラ
     - MySQL2
-    - AWS ( EC2, S3 )
-    - Heroku ( EC2, S3 )
+    - AWS ( S3 )
+    - Heroku
 - その他使用ツール
     - Visual Studio Code
     - draw.io
