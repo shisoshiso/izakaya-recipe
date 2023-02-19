@@ -8,6 +8,11 @@ require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
 require('./preview')
+require("bootstrap");
+require("@fortawesome/fontawesome-free");
+
+import '@fortawesome/fontawesome-free/js/all';
+import "../stylesheets/application.scss";
 
 //= require jquery3
 //= require popper

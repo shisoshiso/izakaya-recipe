@@ -14,7 +14,11 @@ default: &default
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password:
+  # ローカル起動用
+  # password: 
+  # Docker起動用
+  password: pass
+  host: db
   socket: /tmp/mysql.sock
 
 development:

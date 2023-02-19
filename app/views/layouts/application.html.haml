@@ -7,7 +7,7 @@
     = csrf_meta_tags
     = csp_meta_tag
     %link{:href => "http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css", :rel => "stylesheet", :type => "text/css"}/
-    = stylesheet_link_tag 'application', media: 'all'
+    = stylesheet_pack_tag "application", media: "all"
     = javascript_pack_tag 'application'
     %script{:src => "https://kit.fontawesome.com/4715496948.js", :crossorigin => "anonymous"}
     %link{:href=>"https://fonts.googleapis.com/icon?family=Material+Icons", :rel=>"stylesheet"}
